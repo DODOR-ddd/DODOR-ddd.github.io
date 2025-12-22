@@ -84,25 +84,13 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h1 id="WP—about“challenge-for-python”（by-DODOR）"><a href="#WP—about“challenge-for-python”（by-DODOR）" class="headerlink" title="WP—about“challenge for python”（by DODOR）"></a>WP—about“challenge for python”（by DODOR）</h1><h2 id="level1："><a href="#level1：" class="headerlink" title="level1："></a>level1：</h2><p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202025-12-19%20221545.png" alt="屏幕截图 2025-12-19 221545"></p>
-<p>&#96;def caser(s):</p>
-<p>  raw_str&#x3D;”abcdefghijklmnopqrstuvwxyz”</p>
-<p>  new_str&#x3D;”cdefghijklmnopqrstuvwxyzab”</p>
-<p>  result &#x3D; “”</p>
-<p>  for i in s:</p>
-<p>​    if i in raw_str:</p>
-<p>​      index &#x3D; raw_str.index(i)</p>
-<p>​      result +&#x3D; new_str[index]</p>
-<p>​    else:</p>
-<p>​      result +&#x3D; “ “</p>
-<p>  return result</p>
-<p>if <strong>name</strong> &#x3D;&#x3D; ‘<strong>main</strong>‘:</p>
-<p>  s &#x3D; input(“Enter a string: “)</p>
-<p>  print(caser(s))&#96;</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">caser</span>(<span class="params">s</span>):</span><br><span class="line"></span><br><span class="line">  raw_str=<span class="string">&quot;abcdefghijklmnopqrstuvwxyz&quot;</span></span><br><span class="line"></span><br><span class="line">  new_str=<span class="string">&quot;cdefghijklmnopqrstuvwxyzab&quot;</span></span><br><span class="line"></span><br><span class="line">  result = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">if</span> i <span class="keyword">in</span> raw_str:</span><br><span class="line"></span><br><span class="line">​      index = raw_str.index(i)</span><br><span class="line"></span><br><span class="line">​      result += new_str[index]</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">else</span>:</span><br><span class="line"></span><br><span class="line">​      result += <span class="string">&quot; &quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">  s = <span class="built_in">input</span>(<span class="string">&quot;Enter a string: &quot;</span>)</span><br><span class="line"></span><br><span class="line">  <span class="built_in">print</span>(caser(s))`</span><br></pre></td></tr></table></figure>
+
 <p>运行后得到i hope you didnt translate it by hand  thats what computers are for  doing it in by hand is inefficient and that s why this text is so long  using string maketrans   is recommended  now apply on the url</p>
 <p>可知url为map.html。</p>
 <p>输入map运行，得到ocr。</p>
-<h4 id="使用maketrans（）"><a href="#使用maketrans（）" class="headerlink" title="使用maketrans（）"></a>使用maketrans（）</h4><p>def trans_str(s):<br>    inword &#x3D; ‘abcdefghijklmnopqrstuvwxyz’<br>    outword &#x3D; ‘cdefghijklmnopqrstuvwxyzab’<br>    transtab &#x3D; str.maketrans(inword, outword)<br>    new_str &#x3D; s.translate(transtab)<br>    return new_str</p>
-<p>if <strong>name</strong> &#x3D;&#x3D; ‘<strong>main</strong>‘:<br>    s &#x3D; “g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr’q ufw “ <br>    “rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj”<br>    print(trans_str(s))<br>    s1 &#x3D; ‘map’<br>    print(trans_str(s1))</p>
+<h4 id="使用maketrans（）"><a href="#使用maketrans（）" class="headerlink" title="使用maketrans（）"></a>使用maketrans（）</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">trans_str</span>(<span class="params">s</span>):</span><br><span class="line">    inword = <span class="string">&#x27;abcdefghijklmnopqrstuvwxyz&#x27;</span></span><br><span class="line">    outword = <span class="string">&#x27;cdefghijklmnopqrstuvwxyzab&#x27;</span></span><br><span class="line">    transtab = <span class="built_in">str</span>.maketrans(inword, outword)</span><br><span class="line">    new_str = s.translate(transtab)</span><br><span class="line">    <span class="keyword">return</span> new_str</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    s = <span class="string">&quot;g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr&#x27;q ufw &quot;</span> \</span><br><span class="line">    <span class="string">&quot;rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj&quot;</span></span><br><span class="line">    <span class="built_in">print</span>(trans_str(s))</span><br><span class="line">    s1 = <span class="string">&#x27;map&#x27;</span></span><br><span class="line">    <span class="built_in">print</span>(trans_str(s1))</span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -141,7 +129,7 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>hello,this is my first blog.</p>
+        <p>hello,this is my first blog.In my blog ,I’ll share sth interesting and public my wp.Thanks for reading.</p>
 
       
     </div>
