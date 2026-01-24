@@ -4,13 +4,17 @@
   <meta charset="utf-8">
   
   
-  <title>Archives: 2025/12 | Hexo</title>
+  <title>ffuf | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2025/12/index.html">
+  <meta name="description" content="usage-of-FFUF12345678# 基本扫描ffuf -u http:&#x2F;&#x2F;target-site.com&#x2F;FUZZ -w &#x2F;usr&#x2F;share&#x2F;seclists&#x2F;Discovery&#x2F;Web-Content&#x2F;common.txt -mc 200,301,302,403# 重点扫描PHP文件ffuf -u http:&#x2F;&#x2F;target-site.com&#x2F;FUZZ.php -w &#x2F;usr&#x2F;sha">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ffuf">
+<meta property="og:url" content="http://example.com/2026/01/24/ffuf/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="usage-of-FFUF12345678# 基本扫描ffuf -u http:&#x2F;&#x2F;target-site.com&#x2F;FUZZ -w &#x2F;usr&#x2F;share&#x2F;seclists&#x2F;Discovery&#x2F;Web-Content&#x2F;common.txt -mc 200,301,302,403# 重点扫描PHP文件ffuf -u http:&#x2F;&#x2F;target-site.com&#x2F;FUZZ.php -w &#x2F;usr&#x2F;sha">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-01-24T05:09:51.000Z">
+<meta property="article:modified_time" content="2026-01-24T05:11:43.207Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -69,96 +73,52 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2025" class="archive-year">2025</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/12/28/python-challenges-by-DODOR/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-12-28T12:49:24.000Z" itemprop="datePublished">Dec 28</time>
+        <section id="main"><article id="post-ffuf" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/01/24/ffuf/" class="article-date">
+  <time class="dt-published" datetime="2026-01-24T05:09:51.000Z" itemprop="datePublished">2026-01-24</time>
 </a>
-      
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/12/28/python-challenges-by-DODOR/">python challenges by DODOR</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      ffuf
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/12/28/HELLO-GATE-WP-by-DODOR/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-12-28T12:48:59.000Z" itemprop="datePublished">Dec 28</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/12/28/HELLO-GATE-WP-by-DODOR/">HELLO GATE WP by DODOR</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/12/20/DODOR-blog/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-12-20T03:54:25.000Z" itemprop="datePublished">Dec 20</time>
-</a>
+        <h2 id="usage-of-FFUF"><a href="#usage-of-FFUF" class="headerlink" title="usage-of-FFUF"></a>usage-of-FFUF</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基本扫描</span></span><br><span class="line">ffuf -u http://target-site.com/FUZZ -w /usr/share/seclists/Discovery/Web-Content/common.txt -mc 200,301,302,403</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重点扫描PHP文件</span></span><br><span class="line">ffuf -u http://target-site.com/FUZZ.php -w /usr/share/seclists/Discovery/Web-Content/common.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 扫描可能的后台文件</span></span><br><span class="line">ffuf -u http://target-site.com/FUZZ -w /usr/share/seclists/Discovery/Web-Content/Common-PHP-Filenames.txt</span><br></pre></td></tr></table></figure>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/12/20/DODOR-blog/">DODOR-blog</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2025/12/20/hello-world/" class="archive-article-date">
-  <time class="dt-published" datetime="2025-12-20T03:10:10.840Z" itemprop="datePublished">Dec 20</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/01/24/ffuf/" data-id="cuidxv5UIp84K5HBk7MKYzaKh" data-title="ffuf" class="article-share-link"><span class="fa fa-share">Share</span></a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2025/12/20/hello-world/">Hello World</a>
-    </h1>
-  
-
-    </header>
+      
+      
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2025/12/28/python-challenges-by-DODOR/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">python challenges by DODOR</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>

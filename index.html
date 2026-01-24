@@ -71,6 +71,44 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ffuf" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/01/24/ffuf/" class="article-date">
+  <time class="dt-published" datetime="2026-01-24T05:09:51.000Z" itemprop="datePublished">2026-01-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/01/24/ffuf/">ffuf</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="usage-of-FFUF"><a href="#usage-of-FFUF" class="headerlink" title="usage-of-FFUF"></a>usage-of-FFUF</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基本扫描</span></span><br><span class="line">ffuf -u http://target-site.com/FUZZ -w /usr/share/seclists/Discovery/Web-Content/common.txt -mc 200,301,302,403</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重点扫描PHP文件</span></span><br><span class="line">ffuf -u http://target-site.com/FUZZ.php -w /usr/share/seclists/Discovery/Web-Content/common.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 扫描可能的后台文件</span></span><br><span class="line">ffuf -u http://target-site.com/FUZZ -w /usr/share/seclists/Discovery/Web-Content/Common-PHP-Filenames.txt</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/01/24/ffuf/" data-id="cuidxv5UIp84K5HBk7MKYzaKh" data-title="ffuf" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-python-challenges-by-DODOR" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2025/12/28/python-challenges-by-DODOR/" class="article-date">
@@ -278,7 +316,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/01/">January 2026</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/12/">December 2025</a></li></ul>
     </div>
   </div>
 
@@ -289,6 +327,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2026/01/24/ffuf/">ffuf</a>
+          </li>
         
           <li>
             <a href="/2025/12/28/python-challenges-by-DODOR/">python challenges by DODOR</a>
@@ -319,7 +361,7 @@
   <div class="outer">
     <div id="footer-info" class="inner">
       
-      &copy; 2025 John Doe<br>
+      &copy; 2026 John Doe<br>
       Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
