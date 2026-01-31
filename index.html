@@ -71,6 +71,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-theKnife-wp-by-DODOR" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2026/01/31/theKnife-wp-by-DODOR/" class="article-date">
+  <time class="dt-published" datetime="2026-01-31T13:03:00.000Z" itemprop="datePublished">2026-01-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/01/31/theKnife-wp-by-DODOR/">theKnife-wp-by-DODOR</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>依旧简单题，先看题目<img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/image-20260131210447820.png" alt="image-20260131210447820"></p>
+<p>然后就根据hint用dirsearch来扫描可能的路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u http://cloud-1.hgame.vidar.club:31708/ -e php,html,bak,txt,zip,jar -t 50</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/image-20260131210642340.png" alt="image-20260131210642340"></p>
+<p>得到后门的路径，后用蚁剑连接，发现文件列表中的flag。<img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/image-20260131210802887.png" alt="image-20260131210802887"></p>
+<p>得到flag。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2026/01/31/theKnife-wp-by-DODOR/" data-id="cuidZ7kaQvcR-8Mw08VvQGXrp" data-title="theKnife-wp-by-DODOR" class="article-share-link"><span class="fa fa-share">Share</span></a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-php-include-wp-by-dodor" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2026/01/28/php-include-wp-by-dodor/" class="article-date">
@@ -381,6 +426,10 @@
       <ul>
         
           <li>
+            <a href="/2026/01/31/theKnife-wp-by-DODOR/">theKnife-wp-by-DODOR</a>
+          </li>
+        
+          <li>
             <a href="/2026/01/28/php-include-wp-by-dodor/">php://include-wp-by-dodor</a>
           </li>
         
@@ -394,10 +443,6 @@
         
           <li>
             <a href="/2025/12/28/HELLO-GATE-WP-by-DODOR/">HELLO GATE WP by DODOR</a>
-          </li>
-        
-          <li>
-            <a href="/2025/12/20/DODOR-blog/">DODOR-blog</a>
           </li>
         
       </ul>
