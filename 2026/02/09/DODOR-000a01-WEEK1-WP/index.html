@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="DODOR#000a01-WEEK1-WP, DODOR&#39;s BLOG">
-    <meta name="description" content="misc:[REDACTED]题目为（涂黑，修改）过后的一个pdf，我们可以在第一个涂黑位置找到第一段敏感字符串，直接通过文字编辑功能将颜色改为白色再复制出来得到第一个字符串1:PAR4D0X。(![屏幕截图 2026-02-08 2036">
+    <meta name="description" content="misc:[REDACTED]题目为（涂黑，修改）过后的一个pdf，我们可以在第一个涂黑位置找到第一段敏感字符串，直接通过文字编辑功能将颜色改为白色再复制出来得到第一个字符串1:PAR4D0X。(
+然后在第二个涂黑的位置在文字编辑的模式下可">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -372,21 +373,21 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="misc"><a href="#misc" class="headerlink" title="misc:"></a>misc:</h2><h3 id="REDACTED"><a href="#REDACTED" class="headerlink" title="[REDACTED]"></a>[REDACTED]</h3><p>题目为（涂黑，修改）过后的一个pdf，我们可以在第一个涂黑位置找到第一段敏感字符串，直接通过文字编辑功能将颜色改为白色再复制出来得到第一个字符串<strong>1:PAR4D0X</strong>。(![屏幕截图 2026-02-08 203633](..&#x2F;imgs&#x2F;${fiilename}&#x2F;屏幕截图 2026-02-08 203633.png)</p>
+                <h2 id="misc"><a href="#misc" class="headerlink" title="misc:"></a>misc:</h2><h3 id="REDACTED"><a href="#REDACTED" class="headerlink" title="[REDACTED]"></a>[REDACTED]</h3><p>题目为（涂黑，修改）过后的一个pdf，我们可以在第一个涂黑位置找到第一段敏感字符串，直接通过文字编辑功能将颜色改为白色再复制出来得到第一个字符串<strong>1:PAR4D0X</strong>。(<img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-08%20203633.png" alt="屏幕截图 2026-02-08 203633"></p>
 <p>然后在第二个涂黑的位置在文字编辑的模式下可以看到以下内容<img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-03%20165813.png"></p>
 <p>因为字体原因无法直接复制，选着直接图像识别。三段经典JWT，第一段是加密方式，第二段为内容，第三段为签名，经过base64解码得出第二个字符串<strong>2:AllCl3arToPr0ceed</strong></p>
-<p>![](..&#x2F;imgs&#x2F;${fiilename}&#x2F;屏幕截图 2026-02-03 170152.png)</p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-03%20170152.png"></p>
 <p>随后在图片位置有处涂黑，拉对比度和亮度识别出第三个字符串<strong>3:Sh4m1R</strong></p>
-<p>![](..&#x2F;imgs&#x2F;${fiilename}&#x2F;屏幕截图 2026-02-03 170751.png)</p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-03%20170751.png"></p>
 <p>最后在检查pdf的文件结构时发现其尾部有2个%EOF为结尾，可知为pdf的增量更新，第四个字符藏在旧版本被删掉的那一页里。</p>
-<p>![](..&#x2F;imgs&#x2F;${fiilename}&#x2F;屏幕截图 2026-02-05 171658.png)</p>
-<p>我们现在要做的就是将那删掉的一页恢复，也就是定位到第一个%EOF的位置对pdf进行切片，通过grep找到%EOF的位置。![](..&#x2F;imgs&#x2F;${fiilename}&#x2F;屏幕截图 2026-02-05 200000.png)</p>
-<p>![](..&#x2F;imgs&#x2F;${fiilename}&#x2F;屏幕截图 2026-02-08 205415.png)</p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-05%20171658.png"></p>
+<p>我们现在要做的就是将那删掉的一页恢复，也就是定位到第一个%EOF的位置对pdf进行切片，通过grep找到%EOF的位置。<img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-05%20200000.png"></p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-08%20205415.png"></p>
 <p>计算%EOF的代码如下</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;manual.pdf&quot;</span>, <span class="string">&quot;rb&quot;</span>) <span class="keyword">as</span> f_in:</span><br><span class="line">    file = f_in.read()</span><br><span class="line"><span class="keyword">with</span> <span class="built_in">open</span>(<span class="string">&quot;manual_old.pdf&quot;</span>, <span class="string">&quot;wb&quot;</span>) <span class="keyword">as</span> f_out:</span><br><span class="line">    f_out.write(file[:<span class="number">234721</span>])</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>打开manual_old.pdf</p>
-<p>![](..&#x2F;imgs&#x2F;${fiilename}&#x2F;屏幕截图 2026-02-05 180535.png)</p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-05%20180535.png"></p>
 <p>找到第四段字符串<strong>4:D0cR3qu3st3r_Tutu</strong>,最后连接得到flag。</p>
 <h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="魔理沙的魔法目录"><a href="#魔理沙的魔法目录" class="headerlink" title="魔理沙的魔法目录"></a>魔理沙的魔法目录</h3><p><img src="/../imgs/$%7Bfiilename%7D/image-20260208210404239.png" alt="image-20260208210404239"></p>
 <p>用F12及网络保存日志可知，每过一定时长，服务器会发送一个record和一个check的请求，record请求荷载为{“time”:10}，而题目对身份没有做限制，可以直接对&#x2F;record用post的application&#x2F;json传参{“time”:7200}(大于1小时)</p>
