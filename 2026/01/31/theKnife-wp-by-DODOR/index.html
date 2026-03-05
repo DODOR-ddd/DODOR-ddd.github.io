@@ -7,7 +7,7 @@
     <meta name="keywords" content="theKnife-wp-by-DODOR, DODOR&#39;s BLOG">
     <meta name="description" content="依旧简单题，先看题目
 然后就根据hint用dirsearch来扫描可能的路径
-1dirsearch -u http://cloud-1.hgame.vidar.club:31708/ -e php,html,bak,txt,zip,jar ">
+dirsearch -u http://cloud-1.hgame.vidar.club:31708/ -e php,html,bak,txt,zip,jar -">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -369,6 +369,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -376,7 +379,7 @@
             <div id="articleContent">
                 <p>依旧简单题，先看题目<img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/image-20260131210447820.png" alt="image-20260131210447820"></p>
 <p>然后就根据hint用dirsearch来扫描可能的路径</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dirsearch -u http://cloud-1.hgame.vidar.club:31708/ -e php,html,bak,txt,zip,jar -t 50</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dirsearch <span class="token parameter variable">-u</span> http://cloud-1.hgame.vidar.club:31708/ <span class="token parameter variable">-e</span> php,html,bak,txt,zip,jar <span class="token parameter variable">-t</span> <span class="token number">50</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/image-20260131210642340.png" alt="image-20260131210642340"></p>
 <p>得到后门的路径&#x2F;php-backdoor.php，后用蚁剑连接，发现文件列表中的flag。<img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/image-20260131210802887.png" alt="image-20260131210802887"></p>
@@ -570,6 +573,9 @@
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->

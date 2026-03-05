@@ -5,7 +5,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="keywords" content="ffuf, DODOR&#39;s BLOG">
-    <meta name="description" content="usage-of-FFUF12345678# 基本扫描ffuf -u http://target-site.com/FUZZ -w /usr/share/seclists/Discovery/Web-Content/common.txt -">
+    <meta name="description" content="usage-of-FFUF# 基本扫描
+ffuf -u http://target-site.com/FUZZ -w /usr/share/seclists/Discovery/Web-Content/common.txt -mc 200,">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -367,12 +368,22 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="usage-of-FFUF"><a href="#usage-of-FFUF" class="headerlink" title="usage-of-FFUF"></a>usage-of-FFUF</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 基本扫描</span></span><br><span class="line">ffuf -u http://target-site.com/FUZZ -w /usr/share/seclists/Discovery/Web-Content/common.txt -mc 200,301,302,403</span><br><span class="line"></span><br><span class="line"><span class="comment"># 重点扫描PHP文件</span></span><br><span class="line">ffuf -u http://target-site.com/FUZZ.php -w /usr/share/seclists/Discovery/Web-Content/common.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 扫描可能的后台文件</span></span><br><span class="line">ffuf -u http://target-site.com/FUZZ -w /usr/share/seclists/Discovery/Web-Content/Common-PHP-Filenames.txt</span><br></pre></td></tr></table></figure>
+                <h2 id="usage-of-FFUF"><a href="#usage-of-FFUF" class="headerlink" title="usage-of-FFUF"></a>usage-of-FFUF</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 基本扫描</span>
+ffuf <span class="token parameter variable">-u</span> http://target-site.com/FUZZ <span class="token parameter variable">-w</span> /usr/share/seclists/Discovery/Web-Content/common.txt <span class="token parameter variable">-mc</span> <span class="token number">200,301</span>,302,403
+
+<span class="token comment"># 重点扫描PHP文件</span>
+ffuf <span class="token parameter variable">-u</span> http://target-site.com/FUZZ.php <span class="token parameter variable">-w</span> /usr/share/seclists/Discovery/Web-Content/common.txt
+
+<span class="token comment"># 扫描可能的后台文件</span>
+ffuf <span class="token parameter variable">-u</span> http://target-site.com/FUZZ <span class="token parameter variable">-w</span> /usr/share/seclists/Discovery/Web-Content/Common-PHP-Filenames.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -561,6 +572,9 @@
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->

@@ -542,7 +542,7 @@
                                 
                                     Misc:Invest on Matrix解锁hint1就知道是一个version2的二维码，剩下的就是不断解锁补全直到可以通过纠错识别出来，这是基础结构，我们优先补全右下角再逐渐保持中心完整，最后脚本如下：
 
-12345678910111
+from PIL impor
                                 
                             </div>
                             <div class="publish-info">
@@ -648,7 +648,7 @@
                                 
                                     依旧简单题，先看题目
 然后就根据hint用dirsearch来扫描可能的路径
-1dirsearch -u http://cloud-1.hgame.vidar.club:31708/ -e php,html,bak,txt,zip,jar 
+dirsearch -u http://cloud-1.hgame.vidar.club:31708/ -e php,html,bak,txt,zip,jar -
                                 
                             </div>
                             <div class="publish-info">
@@ -698,7 +698,11 @@
                             <div class="summary block-with-text">
                                 
                                     来写一点简单题。。。（qwq
-123456789&lt;?phpshow_source(__FILE__);echo $_GET[&#x27;hello&#x27;];$page=$_GET[&#x27;page&#x27;];while 
+&lt;?php
+show_source(__FILE__);
+echo $_GET['hello'];
+$page=$_GET['page'];
+while (strstr($page, "php://"))
                                 
                             </div>
                             <div class="publish-info">
@@ -747,7 +751,8 @@
                         <div class="card-content article-content">
                             <div class="summary block-with-text">
                                 
-                                    usage-of-FFUF12345678# 基本扫描ffuf -u http://target-site.com/FUZZ -w /usr/share/seclists/Discovery/Web-Content/common.txt -
+                                    usage-of-FFUF# 基本扫描
+ffuf -u http://target-site.com/FUZZ -w /usr/share/seclists/Discovery/Web-Content/common.txt -mc 200,
                                 
                             </div>
                             <div class="publish-info">

