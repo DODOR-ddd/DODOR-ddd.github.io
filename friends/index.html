@@ -19,22 +19,22 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"dodor-ddd.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":false,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":false,"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content=".friends-list { margin: 8px 0 24px; } .friend {   display: flex; align-items: center; gap: 14px;   padding: 12px 0; border-bottom: 1px solid #eee; } .friend img {   width: 52px; height: 52px; border-">
+    <meta name="description" content=".friends-list { margin: 8px 0 32px; } .friend {   display: flex !important;   align-items: center !important;   gap: 14px;   padding: 12px 0 !important;   border-bottom: 1px solid #eee !important;">
 <meta property="og:type" content="website">
 <meta property="og:title" content="friends">
 <meta property="og:url" content="https://dodor-ddd.github.io/friends/index.html">
 <meta property="og:site_name" content="DODOR&#39;s BLOG">
-<meta property="og:description" content=".friends-list { margin: 8px 0 24px; } .friend {   display: flex; align-items: center; gap: 14px;   padding: 12px 0; border-bottom: 1px solid #eee; } .friend img {   width: 52px; height: 52px; border-">
+<meta property="og:description" content=".friends-list { margin: 8px 0 32px; } .friend {   display: flex !important;   align-items: center !important;   gap: 14px;   padding: 12px 0 !important;   border-bottom: 1px solid #eee !important;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://www.acdblog.cn/image/acd.png">
-<meta property="og:image" content="https://epepep.vercel.app/images/icon/mylogo.jpg">
+<meta property="og:image" content="https://dodor-ddd.github.io/medias/jzk.jpg">
+<meta property="og:image" content="https://dodor-ddd.github.io/medias/ep.jpg">
 <meta property="og:image" content="https://assets.summ2.link/blog.jpg">
 <meta property="og:image" content="https://dodor-ddd.github.io/wuliwa.jpg">
 <meta property="article:published_time" content="2026-02-01T06:53:47.000Z">
-<meta property="article:modified_time" content="2026-08-23T14:18:50.579Z">
+<meta property="article:modified_time" content="2026-08-23T14:22:52.734Z">
 <meta property="article:author" content="DODOR">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://www.acdblog.cn/image/acd.png">
+<meta name="twitter:image" content="https://dodor-ddd.github.io/medias/jzk.jpg">
 
 
 <link rel="canonical" href="https://dodor-ddd.github.io/friends/">
@@ -223,35 +223,47 @@
       
       <div class="post-body">
           <style>
-.friends-list { margin: 8px 0 24px; }
+.friends-list { margin: 8px 0 32px; }
 .friend {
-  display: flex; align-items: center; gap: 14px;
-  padding: 12px 0; border-bottom: 1px solid #eee;
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px;
+  padding: 12px 0 !important;
+  border-bottom: 1px solid #eee !important;
+  min-height: 52px;
 }
-.friend img {
-  width: 52px; height: 52px; border-radius: 50%;
-  border: 1px solid #ddd; object-fit: cover; flex-shrink: 0;
+/* 去掉 NEXT 给 .post-body img 默认加的 margin-bottom，保证头像垂直居中 */
+.post-body .friend img {
+  width: 52px !important;
+  height: 52px !important;
+  border-radius: 50% !important;
+  border: 1px solid #ddd !important;
+  object-fit: cover !important;
+  flex-shrink: 0 !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
 }
-.friend a { font-weight: 600; }
-.friend p { margin: 2px 0 0; color: #888; font-size: 0.9em; }
+.friend .f-name { font-weight: 600; line-height: 1.3; }
+.friend .f-desc { color: #888; font-size: 0.9em; line-height: 1.4; margin: 2px 0 0 !important; }
 </style>
 
 <div class="friends-list">
   <div class="friend">
-    <img src="https://www.acdblog.cn/image/acd.png" alt="jzk">
-    <div><a href="https://acdblog.cn" target="_blank" rel="noopener">jzk</a><p>good佬 · 前去学习</p></div>
+    <img src="/medias/jzk.jpg" alt="jzk">
+    <div><div class="f-name"><a href="https://acdblog.cn" target="_blank" rel="noopener">jzk</a></div><div class="f-desc">good佬 · 前去学习</div></div>
   </div>
   <div class="friend">
-    <img src="https://epepep.vercel.app/images/icon/mylogo.jpg" alt="ep">
-    <div><a href="https://epepep.vercel.app/" target="_blank" rel="noopener">ep</a><p>佬 · 前去学习</p></div>
+    <img src="/medias/ep.jpg" alt="ep">
+    <div><div class="f-name"><a href="https://epepep.vercel.app/" target="_blank" rel="noopener">ep</a></div><div class="f-desc">佬 · 前去学习</div></div>
   </div>
   <div class="friend">
     <img src="https://assets.summ2.link/blog.jpg" alt="summ2">
-    <div><a href="https://summ2.link" target="_blank" rel="noopener">summ2</a><p>pwn 学长，人美心善（雾） · 前去学习</p></div>
+    <div><div class="f-name"><a href="https://summ2.link" target="_blank" rel="noopener">summ2</a></div><div class="f-desc">pwn 学长，人美心善（雾） · 前去学习</div></div>
   </div>
   <div class="friend">
     <img src="/wuliwa.jpg" alt="wuliwa">
-    <div><a href="https://wuli-wa.github.io/" target="_blank" rel="noopener">wuliwa</a><p>Wuliwa!!! · 前去学习</p></div>
+    <div><div class="f-name"><a href="https://wuli-wa.github.io/" target="_blank" rel="noopener">wuliwa</a></div><div class="f-desc">Wuliwa!!! · 前去学习</div></div>
   </div>
 </div>
 
