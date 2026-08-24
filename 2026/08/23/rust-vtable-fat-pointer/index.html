@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"dodor-ddd.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":false,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":false,"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="真是好久没更新了，上次的知识补全计划也咕咕咕了（ 还是用一个程序作为例子展开讲罢 trait Greet &#123;     fn greet(&amp;self) -&gt; String; &#125;  struct Cat; impl Greet for Cat &#123;     fn greet(&amp;self) -&gt; String &#123; &quot;meow&quot;.into() &amp;#12">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Rust的虚表与胖指针及其安全应用">
+<meta property="og:url" content="https://dodor-ddd.github.io/2026/08/23/rust-vtable-fat-pointer/index.html">
+<meta property="og:site_name" content="DODOR&#39;s BLOG">
+<meta property="og:description" content="真是好久没更新了，上次的知识补全计划也咕咕咕了（ 还是用一个程序作为例子展开讲罢 trait Greet &#123;     fn greet(&amp;self) -&gt; String; &#125;  struct Cat; impl Greet for Cat &#123;     fn greet(&amp;self) -&gt; String &#123; &quot;meow&quot;.into() &amp;#12">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2026-08-23T13:50:00.000Z">
+<meta property="article:modified_time" content="2026-08-24T03:26:48.856Z">
+<meta property="article:author" content="DODOR">
+<meta property="article:tag" content="Rust">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://dodor-ddd.github.io/2026/08/23/rust-vtable-fat-pointer/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://dodor-ddd.github.io/2026/08/23/rust-vtable-fat-pointer/","path":"2026/08/23/rust-vtable-fat-pointer/","title":"Rust的虚表与胖指针及其安全应用"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Rust的虚表与胖指针及其安全应用 | DODOR's BLOG</title>
+  
+
+
+
+
+
+
+
+
+  
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" defer></script>
+<script src="/js/third-party/search/local-search.js" defer></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">DODOR's BLOG</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a></li><li class="menu-item menu-item-friends"><a href="/friends/" rel="section"><i class="fa fa-address-book fa-fw"></i>friends</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%96%E6%8C%87%E9%92%88"><span class="nav-number">1.</span> <span class="nav-text">胖指针</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dyn-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.</span> <span class="nav-text">dyn 是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#dyn-Trait"><span class="nav-number">3.</span> <span class="nav-text">dyn Trait</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vtable"><span class="nav-number">4.</span> <span class="nav-text">vtable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E6%AC%A1%E5%8A%A8%E6%80%81%E5%88%86%E5%8F%91"><span class="nav-number">5.</span> <span class="nav-text">一次动态分发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B6%85-trait-%E4%B8%8E-upcasting"><span class="nav-number">6.</span> <span class="nav-text">超 trait 与 upcasting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%99%9A%E8%A1%A8%E5%8A%AB%E6%8C%81"><span class="nav-number">7.</span> <span class="nav-text">虚表劫持</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">8.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="DODOR"
+      src="/medias/qingxu.jpg">
+  <p class="site-author-name" itemprop="name">DODOR</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://dodor-ddd.github.io/2026/08/23/rust-vtable-fat-pointer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/medias/qingxu.jpg">
+      <meta itemprop="name" content="DODOR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DODOR's BLOG">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Rust的虚表与胖指针及其安全应用 | DODOR's BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Rust的虚表与胖指针及其安全应用
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2026-08-23 21:50:00" itemprop="dateCreated datePublished" datetime="2026-08-23T21:50:00+08:00">2026-08-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2026-08-24 11:26:48" itemprop="dateModified" datetime="2026-08-24T11:26:48+08:00">2026-08-24</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>真是好久没更新了，上次的知识补全计划也咕咕咕了（</p>
+<p>还是用一个程序作为例子展开讲罢</p>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">trait</span> <span class="token type-definition class-name">Greet</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">greet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">struct</span> <span class="token type-definition class-name">Cat</span><span class="token punctuation">;</span>
+<span class="token keyword">impl</span> <span class="token class-name">Greet</span> <span class="token keyword">for</span> <span class="token class-name">Cat</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">fn</span> <span class="token function-definition function">greet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span> <span class="token punctuation">&#123;</span> <span class="token string">"meow"</span><span class="token punctuation">.</span><span class="token function">into</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token class-name">Cat</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> d<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">dyn</span> <span class="token class-name">Greet</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>c<span class="token punctuation">;</span>
+
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span><span class="token punctuation">,</span> <span class="token namespace">std<span class="token punctuation">::</span>mem<span class="token punctuation">::</span></span><span class="token function">size_of</span><span class="token punctuation">::</span><span class="token operator">&lt;</span><span class="token operator">&amp;</span><span class="token class-name">Cat</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 8</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span><span class="token punctuation">,</span> <span class="token namespace">std<span class="token punctuation">::</span>mem<span class="token punctuation">::</span></span><span class="token function">size_of</span><span class="token punctuation">::</span><span class="token operator">&lt;</span><span class="token operator">&amp;</span><span class="token keyword">dyn</span> <span class="token class-name">Greet</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 16</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="胖指针"><a href="#胖指针" class="headerlink" title="胖指针"></a>胖指针</h2><p>上面的<code>&amp;dyn Greet</code>是16字节</p>
+<p><code>&amp;[u8]</code> 同样是 16 字节：</p>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span><span class="token punctuation">,</span> <span class="token namespace">std<span class="token punctuation">::</span>mem<span class="token punctuation">::</span></span><span class="token function">size_of</span><span class="token punctuation">::</span><span class="token operator">&lt;</span><span class="token operator">&amp;</span><span class="token punctuation">[</span><span class="token keyword">u8</span><span class="token punctuation">]</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 16</span>
+<span class="token keyword">let</span> s<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token punctuation">[</span><span class="token keyword">u8</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// 内存布局: (数据指针, 长度)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>因为切片要支持 <code>s.len()</code>，光有一个起始地址不够，得把长度带上。于是 <code>&amp;[T]</code> 变成”数据指针 + usize 长度”两个 word。<code>&amp;str</code> 同理，<code>str</code> 的元数据也是长度。</p>
+<p>Rust 把这种指针 + 附加信息的结构叫胖指针（fat pointer）。元数据类型由 <code>Pointee</code> trait 的关联类型 <code>Metadata</code> 决定，目前只有两种：</p>
+<ul>
+<li>切片 &#x2F; <code>str</code>：长度（usize）</li>
+<li>trait object：虚表指针</li>
+</ul>
+<p>瘦指针（thin pointer）就是一个裸地址，比如 <code>&amp;Cat</code>、<code>*const u8</code>。</p>
+<h2 id="dyn-是什么"><a href="#dyn-是什么" class="headerlink" title="dyn 是什么"></a>dyn 是什么</h2><p><code>dyn Greet</code> 是一个实现了 <code>Greet</code>、但类型未知的东西，它叫 trait object（trait 对象）。</p>
+<p>什么时候会需要它？编译期你只知道”它实现了 <code>Greet</code>“，不知道具体是 Cat 还是 Dog，却想把它们塞进同一个容器、传给同一个函数。泛型做不到这件事——泛型是单态化，<code>Vec&lt;Box&lt;Cat&gt;&gt;</code> 和 <code>Vec&lt;Box&lt;Dog&gt;&gt;</code> 是两个完全不同的类型，放不进同一个 <code>Vec</code>：</p>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">trait</span> <span class="token type-definition class-name">Greet</span> <span class="token punctuation">&#123;</span> <span class="token keyword">fn</span> <span class="token function-definition function">greet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+<span class="token keyword">struct</span> <span class="token type-definition class-name">Cat</span><span class="token punctuation">;</span> <span class="token keyword">impl</span> <span class="token class-name">Greet</span> <span class="token keyword">for</span> <span class="token class-name">Cat</span> <span class="token punctuation">&#123;</span> <span class="token keyword">fn</span> <span class="token function-definition function">greet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span> <span class="token punctuation">&#123;</span> <span class="token string">"meow"</span><span class="token punctuation">.</span><span class="token function">into</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span>
+<span class="token keyword">struct</span> <span class="token type-definition class-name">Dog</span><span class="token punctuation">;</span> <span class="token keyword">impl</span> <span class="token class-name">Greet</span> <span class="token keyword">for</span> <span class="token class-name">Dog</span> <span class="token punctuation">&#123;</span> <span class="token keyword">fn</span> <span class="token function-definition function">greet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span> <span class="token punctuation">&#123;</span> <span class="token string">"woof"</span><span class="token punctuation">.</span><span class="token function">into</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span>
+
+<span class="token keyword">let</span> <span class="token keyword">mut</span> pets<span class="token punctuation">:</span> <span class="token class-name">Vec</span><span class="token operator">&lt;</span><span class="token class-name">Box</span><span class="token operator">&lt;</span><span class="token keyword">dyn</span> <span class="token class-name">Greet</span><span class="token operator">>></span> <span class="token operator">=</span> <span class="token class-name">Vec</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+pets<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token class-name">Box</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token class-name">Cat</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+pets<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token class-name">Box</span><span class="token punctuation">::</span><span class="token function">new</span><span class="token punctuation">(</span><span class="token class-name">Dog</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> p <span class="token keyword">in</span> <span class="token operator">&amp;</span>pets <span class="token punctuation">&#123;</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span><span class="token punctuation">,</span> p<span class="token punctuation">.</span><span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// meow / woof</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>Vec&lt;Box&lt;dyn Greet&gt;&gt;</code> 里每个元素的真实类型都不同，但对外的接口一致。每次<code>p.greet()</code> 调用时要查这个元素到底是谁、它的 greet 在哪，然后跳过去。这种运行期才确定调谁的写法，叫动态分发（dynamic dispatch）；泛型在编译期就确定调谁，叫静态分发（static dispatch）。</p>
+<p>动态分发多一层间接调用，通常也告别了内联，这是它的主要代价；换来的是”用一个统一的类型装任意实现”。<code>dyn</code> 本身是未定大小的（<code>!Sized</code>），不能拿 <code>dyn Greet</code> 直接当值用，必须放在引用、指针或盒子后面，像<code>&amp;dyn Greet</code>、<code>Box&lt;dyn Greet&gt;</code>、<code>Rc&lt;dyn Greet&gt;</code> 都行。</p>
+<h2 id="dyn-Trait"><a href="#dyn-Trait" class="headerlink" title="dyn Trait"></a>dyn Trait</h2><p><code>&amp;dyn Greet</code> 的 16 字节拆开是：</p>
+<pre class="line-numbers language-none"><code class="language-none">data   : *const ()   &#x2F;&#x2F; 指向具体对象
+vtable : *const ()   &#x2F;&#x2F; 指向类型 Cat 的 Greet 实现表<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>旧版标准库里有个 <code>std::raw::TraitObject</code>，就是这个结构，专门用来拆 trait object：</p>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token attribute attr-name">#[repr(C)]</span>
+<span class="token keyword">pub</span> <span class="token keyword">struct</span> <span class="token type-definition class-name">TraitObject</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">pub</span> data<span class="token punctuation">:</span> <span class="token operator">*</span><span class="token keyword">mut</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token keyword">pub</span> vtable<span class="token punctuation">:</span> <span class="token operator">*</span><span class="token keyword">mut</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>它后来被移出了标准库，我这个版本的 rustc 里 <code>std::raw</code> 已经不存在了。但仍然可以借助transmute：</p>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token attribute attr-name">#[repr(C)]</span>
+<span class="token keyword">struct</span> <span class="token type-definition class-name">TraitObject</span> <span class="token punctuation">&#123;</span> data<span class="token punctuation">:</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> vtable<span class="token punctuation">:</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span>
+
+<span class="token keyword">let</span> to<span class="token punctuation">:</span> <span class="token class-name">TraitObject</span> <span class="token operator">=</span> <span class="token keyword">unsafe</span> <span class="token punctuation">&#123;</span> <span class="token namespace">std<span class="token punctuation">::</span>mem<span class="token punctuation">::</span></span><span class="token function">transmute</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token macro property">assert_eq!</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>data <span class="token keyword">as</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token class-name">Cat</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>c <span class="token keyword">as</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token class-name">Cat</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>ps：这个 transmute 是合法的：两个类型都是 16 字节，引用转成裸指针对没有别名问题。不过日常写代码用不到它，下面有更干净的观察方式。</p>
+<h2 id="vtable"><a href="#vtable" class="headerlink" title="vtable"></a>vtable</h2><p>rustc 生成 vtable 的逻辑在 <code>compiler/rustc_middle/src/ty/vtable.rs</code>。布局如下（rustc 把它标为 explicitly unstable，不保证稳定；下文实测基于 rustc 1.97.1）：</p>
+<table>
+<thead>
+<tr>
+<th>偏移</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td><code>drop_in_place</code> 函数指针</td>
+</tr>
+<tr>
+<td>1</td>
+<td>具体类型的大小（size）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>具体类型的对齐（align）</td>
+</tr>
+<tr>
+<td>3..</td>
+<td>方法指针，按 trait 声明顺序，超 trait 的方法在前</td>
+</tr>
+</tbody></table>
+<p>前三个条目是 vtable 的”头”。有了它们，运行时不需要知道具体类型就能完成 drop、算 size、算 align —— <code>size_of_val</code>、<code>align_of_val</code> 就是这么实现的。</p>
+<p>把上一节的 <code>to.vtable</code> 当 usize 数组读出来：</p>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">let</span> vt <span class="token operator">=</span> to<span class="token punctuation">.</span>vtable <span class="token keyword">as</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token keyword">usize</span><span class="token punctuation">;</span>
+<span class="token keyword">unsafe</span> <span class="token punctuation">&#123;</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"&#123;:p&#125;"</span><span class="token punctuation">,</span> <span class="token operator">*</span>vt <span class="token keyword">as</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// drop_in_place</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span><span class="token punctuation">,</span> <span class="token operator">*</span>vt<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// size</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span><span class="token punctuation">,</span> <span class="token operator">*</span>vt<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token comment">// align</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"&#123;:p&#125;"</span><span class="token punctuation">,</span> <span class="token operator">*</span>vt<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// greet</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>Cat</code> 是零大小类型（ZST），输出是：</p>
+<pre class="line-numbers language-none"><code class="language-none">0x0   &#x2F;&#x2F; 不需要 drop，drop_in_place 是空指针
+0     &#x2F;&#x2F; size
+1     &#x2F;&#x2F; align
+0x55… &#x2F;&#x2F; greet 的函数指针<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果换成一个带字段的类型就能看到真实值。<code>struct Dog { name: String }</code> 的 vtable：</p>
+<pre class="line-numbers language-none"><code class="language-none">drop_in_place &#x3D; 0x55…   &#x2F;&#x2F; 真实的 drop glue 代码
+size          &#x3D; 24      &#x2F;&#x2F; size_of::&lt;Dog&gt;()
+align         &#x3D; 8
+greet         &#x3D; 0x55…
+shout         &#x3D; 0x55…<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>rustc 源码里对应这段逻辑：<code>ty.needs_drop</code> 为 false 时 <code>drop_in_place</code> 写空指针，否则写 drop glue 的地址。</p>
+<h2 id="一次动态分发"><a href="#一次动态分发" class="headerlink" title="一次动态分发"></a>一次动态分发</h2><p><code>d.greet()</code> 在编译期不知道 <code>d</code> 背后是 Cat 还是别的类型，不能直接 call。于是就</p>
+<ol>
+<li>从 vtable 偏移 3 取出函数指针</li>
+<li>把 <code>d</code> 的两个 word（data, vtable）作为参数传进去</li>
+</ol>
+<p>trait 方法 <code>fn greet(&amp;self)</code> 在 ABI 层收到的 self 就是这两个 word。</p>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">type</span> <span class="token type-definition class-name">GreetFn</span> <span class="token operator">=</span> <span class="token keyword">unsafe</span> <span class="token keyword">fn</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token keyword">const</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> vt <span class="token operator">=</span> to<span class="token punctuation">.</span>vtable <span class="token keyword">as</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token keyword">usize</span><span class="token punctuation">;</span>
+<span class="token keyword">unsafe</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> greet<span class="token punctuation">:</span> <span class="token class-name">GreetFn</span> <span class="token operator">=</span> <span class="token namespace">std<span class="token punctuation">::</span>mem<span class="token punctuation">::</span></span><span class="token function">transmute</span><span class="token punctuation">(</span><span class="token operator">*</span>vt<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> out <span class="token operator">=</span> <span class="token function">greet</span><span class="token punctuation">(</span>to<span class="token punctuation">.</span>data<span class="token punctuation">,</span> to<span class="token punctuation">.</span>vtable<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"&#123;out&#125;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// meow</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>把函数指针 transmute 成别的签名是 UB 敏感操作，这里只为演示。但调用约定是确定的：dyn 方法第一个参数是数据指针，第二个是 vtable 指针。</p>
+<p>对比静态分发：泛型函数 <code>fn f&lt;T: Greet&gt;(x: &amp;T)</code> 里调 <code>x.greet()</code>，单态化之后是一次直接调用，可以内联。dyn 多了 vtable 的一次内存加载和一次间接跳转。像是异质集合 <code>Vec&lt;Box&lt;dyn Greet&gt;&gt;</code> 只能用 dyn。在性能敏感的路径用泛型。</p>
+<h2 id="超-trait-与-upcasting"><a href="#超-trait-与-upcasting" class="headerlink" title="超 trait 与 upcasting"></a>超 trait 与 upcasting</h2><p><code>trait Animal: Greet</code> 的情况下，<code>&amp;dyn Animal</code> 的 vtable 长这样：</p>
+<pre class="line-numbers language-none"><code class="language-none">[drop_in_place, size, align, greet, shout, name, ...]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>超 trait 的方法排前面，然后才是自己的。</p>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">let</span> a<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">dyn</span> <span class="token class-name">Animal</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>c<span class="token punctuation">;</span>
+<span class="token keyword">let</span> up<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">dyn</span> <span class="token class-name">Greet</span> <span class="token operator">=</span> a<span class="token punctuation">;</span>   <span class="token comment">// upcast</span>
+
+<span class="token comment">// up 的 vtable 指针和 a 的完全相同</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Greet 的方法在两个 vtable 里都在偏移 3、4，所以 <code>dyn Animal</code> 转 <code>dyn Greet</code> 不需要调整 vtable 指针，直接复用。rustc 的 vtable 还有一种 <code>TraitVPtr</code> 条目，指向单独的超 trait vtable，算是给 upcasting 用的兜底。</p>
+<p>顺带提 dyn 兼容性的两个边界：</p>
+<ul>
+<li><code>fn new() -&gt; Self where Self: Sized</code> 这类非分发方法不占 vtable 槽位，trait 仍可 dyn</li>
+<li>泛型方法（<code>fn id&lt;T&gt;(&amp;self, x: T)</code>）会让整个 trait 失去 dyn 兼容性，编译直接报 E0038</li>
+</ul>
+<h2 id="虚表劫持"><a href="#虚表劫持" class="headerlink" title="虚表劫持"></a>虚表劫持</h2><p>上面一直在”读”虚表。把它当安全点看，整条链路里真正被信任的是那个 <code>vtable_ptr</code>：虚派发每次都从 <code>vtable_ptr</code> 指向的地方按偏移取函数指针再间接调用。rustc 假定它是可信的，因为它指向只读数据段。可一旦某个越界写能改掉一个 trait object 的 <code>vtable_ptr</code>，这套信任就没了。</p>
+<p><code>unsafe</code> 的指针算术没有边界检查。常见的一种场景：功能对象被存成 <code>Box&lt;dyn Trait&gt;</code> 数组，某个下标的读写只在”上层逻辑&#x2F;编译器”那里检查过，底层却直接 <code>ptr.add(idx)</code> 访问。于是：</p>
+<ul>
+<li>越界读胖指针的第二个 word，就能<strong>泄漏 <code>vtable_ptr</code></strong>。vtable 在二进制里有固定偏移（可以用 <code>readelf -r</code> 在重定位表里反查出来），泄出它就能算出 PIE 基址。</li>
+<li>越界写同一个 word，就能<strong>把 <code>vtable_ptr</code> 改成自己可控的内存</strong>。虚派发只读”方法条目所在的那个偏移”，所以伪造虚表根本不用管 drop&#x2F;size&#x2F;align，只要保证方法那一项指向目标函数。</li>
+</ul>
+<pre class="line-numbers language-rust" data-language="rust"><code class="language-rust"><span class="token keyword">trait</span> <span class="token type-definition class-name">Greet</span> <span class="token punctuation">&#123;</span> <span class="token keyword">fn</span> <span class="token function-definition function">greet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+<span class="token keyword">struct</span> <span class="token type-definition class-name">Cat</span><span class="token punctuation">;</span>
+<span class="token keyword">impl</span> <span class="token class-name">Greet</span> <span class="token keyword">for</span> <span class="token class-name">Cat</span> <span class="token punctuation">&#123;</span> <span class="token keyword">fn</span> <span class="token function-definition function">greet</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token keyword">self</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span> <span class="token punctuation">&#123;</span> <span class="token string">"meow"</span><span class="token punctuation">.</span><span class="token function">into</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span> <span class="token punctuation">&#125;</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">win</span><span class="token punctuation">(</span>_data<span class="token punctuation">:</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> _vt<span class="token punctuation">:</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span> <span class="token punctuation">&#123;</span> <span class="token string">"pwned"</span><span class="token punctuation">.</span><span class="token function">into</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#125;</span>
+
+<span class="token attribute attr-name">#[repr(C)]</span>
+<span class="token keyword">struct</span> <span class="token type-definition class-name">FakeVt</span> <span class="token punctuation">&#123;</span>
+    drop<span class="token punctuation">:</span> <span class="token keyword">usize</span><span class="token punctuation">,</span>
+    size<span class="token punctuation">:</span> <span class="token keyword">usize</span><span class="token punctuation">,</span>
+    align<span class="token punctuation">:</span> <span class="token keyword">usize</span><span class="token punctuation">,</span>
+    method<span class="token punctuation">:</span> <span class="token keyword">unsafe</span> <span class="token keyword">fn</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token keyword">const</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">-></span> <span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token comment">// +0x18，方法 0</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">fn</span> <span class="token function-definition function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token class-name">Cat</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> <span class="token keyword">mut</span> d<span class="token punctuation">:</span> <span class="token operator">&amp;</span><span class="token keyword">dyn</span> <span class="token class-name">Greet</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>c<span class="token punctuation">;</span>
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span><span class="token punctuation">,</span> d<span class="token punctuation">.</span><span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// meow</span>
+
+    <span class="token keyword">let</span> fake <span class="token operator">=</span> <span class="token class-name">FakeVt</span> <span class="token punctuation">&#123;</span> drop<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> size<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> align<span class="token punctuation">:</span> <span class="token number">0</span><span class="token punctuation">,</span> method<span class="token punctuation">:</span> win <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 把 d 的 vtable_ptr 指向伪造虚表 —— 实际攻击里这一步来自越界写</span>
+    <span class="token keyword">let</span> slot <span class="token operator">=</span> <span class="token operator">&amp;</span><span class="token keyword">mut</span> d <span class="token keyword">as</span> <span class="token operator">*</span><span class="token keyword">mut</span> <span class="token operator">&amp;</span><span class="token keyword">dyn</span> <span class="token class-name">Greet</span> <span class="token keyword">as</span> <span class="token operator">*</span><span class="token keyword">mut</span> <span class="token punctuation">[</span><span class="token operator">*</span><span class="token keyword">const</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">unsafe</span> <span class="token punctuation">&#123;</span> <span class="token punctuation">(</span><span class="token operator">*</span>slot<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">&amp;</span>fake <span class="token keyword">as</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token class-name">FakeVt</span> <span class="token keyword">as</span> <span class="token operator">*</span><span class="token keyword">const</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token punctuation">&#125;</span>
+
+    <span class="token macro property">println!</span><span class="token punctuation">(</span><span class="token string">"&#123;&#125;"</span><span class="token punctuation">,</span> d<span class="token punctuation">.</span><span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// pwned</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>输出是：</p>
+<pre class="line-numbers language-none"><code class="language-none">meow
+pwned<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>这跟 C++ 里劫持对象的 vptr 思路一致，差的就是Rust 把 vtable 指针放在引用&#x2F;盒子里而不是对象内部，所以攻击目标从对象体里的 vptr转向对象旁边独立的 16 字节胖指针。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>Static and Dynamic Dispatch — The Rust Programming Language<br><a target="_blank" rel="noopener" href="https://rust.googlesource.com/rust/+/cff0b78ce7a46daf2e6f8de16273ef2e10b6fea6/src/doc/trpl/static-and-dynamic-dispatch.md">https://rust.googlesource.com/rust/+/cff0b78ce7a46daf2e6f8de16273ef2e10b6fea6/src/doc/trpl/static-and-dynamic-dispatch.md</a></li>
+<li>Rust: Static vs Dynamic Dispatch — SoftwareMill<br><a target="_blank" rel="noopener" href="https://softwaremill.com/rust-static-vs-dynamic-dispatch/">https://softwaremill.com/rust-static-vs-dynamic-dispatch/</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Rust/" rel="tag"># Rust</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2026/02/27/DODOR%E7%9A%84hgame%E5%A4%8D%E7%8E%B0%E4%B8%8E%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/" rel="prev" title="DODOR的hgame复现与知识点总结">
+                  <i class="fa fa-angle-left"></i> DODOR的hgame复现与知识点总结
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2025 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-code"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">DODOR</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+</body>
+</html>
