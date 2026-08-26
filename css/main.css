@@ -1488,7 +1488,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #328e2f;
+  background: #c6ffe4;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2915,17 +2915,17 @@ header.header {
     left: 320px;
   }
 }
-/* ===== 置顶吸顶导航栏（NEXT Muse，桌面端） =====
-   把导航菜单固定在页面顶部，标题在下，滚动时保持吸顶。 */
+/* ===== 底部固定导航栏（NEXT Muse，桌面端） =====
+   把导航菜单固定在页面底部，滚动时保持吸底。 */
 @media (min-width: 768px) {
   .site-nav {
     position: fixed;
-    top: 0;
+    bottom: 0;
     left: 0;
     right: 0;
     z-index: 1001;
     background: var(--content-bg-color);
-    border-bottom: 1px solid rgba(128,128,128,0.4);
+    border-top: 1px solid rgba(128,128,128,0.4);
   }
   .site-nav .main-menu {
     display: flex;
@@ -2939,7 +2939,19 @@ header.header {
   .site-nav .menu-item a {
     padding: 0 12px;
   }
-  .header {
-    padding-top: 70px !important;
+  body {
+    padding-bottom: 60px;
+  }
+}
+/* ===== 首页摘要灰底 ===== */
+.excerpt-box {
+  background: #f2f2f2;
+  border-radius: 4px;
+  padding: 14px 16px;
+  margin-bottom: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  .excerpt-box {
+    background: #333;
   }
 }
