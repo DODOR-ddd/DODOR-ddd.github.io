@@ -6,10 +6,9 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 8.1.1">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/medias/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/medias/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/medias/favicon.png">
 
 <link rel="stylesheet" href="/css/main.css">
 
@@ -19,12 +18,12 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"dodor-ddd.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":true,"version":"8.29.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":false,"codeblock":{"theme":{"light":"default","dark":"stackoverflow-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"language":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":false,"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":3,"unescape":false,"preload":true}}</script><script src="/js/config.js" defer></script>
 
-    <meta name="description" content="真是好久没更新了，上次的知识补全计划也咕咕咕了（ 还是用一个程序作为例子展开讲罢 trait Greet &#123;     fn greet(&amp;self) -&gt; String; &#125;  struct Cat; impl Greet for Cat &#123;     fn greet(&amp;self) -&gt; String &#123; &quot;meow&quot;.into() &amp;#12">
+    <meta name="description" content="真是好久没更新了，上次的知识补全计划也咕咕咕了（ 还是用一个程序作为例子展开讲罢 胖指针 上面的 &amp;dyn Greet 是16字节 &amp;[u8] 同样是 16 字节： 因为切片要支持 s.len() ，光有一个起始地址不够，得把长度带上。于是 &amp;[T] 变成”数据指针 + us…">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Rust的虚表与胖指针及其安全应用">
 <meta property="og:url" content="https://dodor-ddd.github.io/2026/08/23/rust-vtable-fat-pointer/index.html">
 <meta property="og:site_name" content="DODOR&#39;s BLOG">
-<meta property="og:description" content="真是好久没更新了，上次的知识补全计划也咕咕咕了（ 还是用一个程序作为例子展开讲罢 trait Greet &#123;     fn greet(&amp;self) -&gt; String; &#125;  struct Cat; impl Greet for Cat &#123;     fn greet(&amp;self) -&gt; String &#123; &quot;meow&quot;.into() &amp;#12">
+<meta property="og:description" content="真是好久没更新了，上次的知识补全计划也咕咕咕了（ 还是用一个程序作为例子展开讲罢 胖指针 上面的 &amp;dyn Greet 是16字节 &amp;[u8] 同样是 16 字节： 因为切片要支持 s.len() ，光有一个起始地址不够，得把长度带上。于是 &amp;[T] 变成”数据指针 + us…">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2026-08-23T13:50:00.000Z">
 <meta property="article:modified_time" content="2026-08-24T03:26:48.856Z">
