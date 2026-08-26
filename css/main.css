@@ -1488,7 +1488,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #45c13b;
+  background: #c46eff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2915,22 +2915,28 @@ header.header {
     left: 320px;
   }
 }
-/* ===== 底部固定导航栏（NEXT Muse，全尺寸） =====
-   导航菜单固定在页面底部，滚动时保持吸底；移动端也常显，去掉 ☰ 开关。 */
+/* ===== 顶部自动隐藏导航栏（hover 呼出） =====
+   导航平时收起到顶部，只露出细条；鼠标靠近顶部时向下滑出。 */
 .site-nav {
   position: fixed;
-  bottom: 0;
+  top: 0;
   left: 0;
   right: 0;
   z-index: 1001;
   background: var(--content-bg-color);
-  border-top: 1px solid rgba(128,128,128,0.4);
-/* 覆盖移动端的折叠样式，让菜单常显 */
+  border-bottom: 1px solid rgba(128,128,128,0.4);
+/* 覆盖主题的移动端折叠样式 */
   height: auto !important;
   overflow: visible !important;
   visibility: visible !important;
   margin: 0 !important;
   padding: 0 !important;
+/* 平时收起到顶部，只露出底部 12px 作为抓手 */
+  transform: translateY(calc(-100% + 12px));
+  transition: transform 0.28s ease;
+}
+.site-nav:hover {
+  transform: translateY(0);
 }
 .site-nav .main-menu {
   display: flex;
@@ -2939,27 +2945,15 @@ header.header {
   flex-wrap: wrap;
   justify-content: center;
   margin: 0 auto;
-  padding: 8px 16px;
+  padding: 12px 16px 16px;
 }
 .site-nav .menu-item a {
   padding: 6px 10px;
   line-height: 1.4;
 }
-/* 移除顶部 ☰ 导航开关（导航常驻底部，不需要） */
+/* 顶部 ☰ 导航开关不再需要（导航常驻并自动隐藏） */
 .site-nav-toggle {
   display: none !important;
-}
-/* 侧边栏开关（TOC）会跟底部导航/回到顶部打架，一并隐藏 */
-.sidebar-toggle {
-  display: none !important;
-}
-/* 页脚上方让出导航高度。
-   主题把 html/body 高度锁成 100vh，导致 body padding-bottom 不生效；
-   这里改 body 为自然高度 + min-height:100vh，padding-bottom 才能产生滚动空间，把页脚顶上来。 */
-body {
-  height: auto !important;
-  min-height: 100vh;
-  padding-bottom: 110px;
 }
 /* ===== 首页摘要灰底 ===== */
 .excerpt-box {
@@ -2972,8 +2966,4 @@ body {
   .excerpt-box {
     background: #333;
   }
-}
-/* ===== 回到顶部按钮上移，避免被底部固定导航盖住 ===== */
-.back-to-top.back-to-top-on {
-  bottom: 92px !important;
 }
