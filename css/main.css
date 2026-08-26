@@ -1488,7 +1488,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #c61dac;
+  background: #20457e;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2915,33 +2915,43 @@ header.header {
     left: 320px;
   }
 }
-/* ===== 底部固定导航栏（NEXT Muse，桌面端） =====
-   把导航菜单固定在页面底部，滚动时保持吸底。 */
-@media (min-width: 768px) {
-  .site-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 1001;
-    background: var(--content-bg-color);
-    border-top: 1px solid rgba(128,128,128,0.4);
-  }
-  .site-nav .main-menu {
-    display: flex;
-    justify-content: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  .site-nav .menu-item a {
-    padding: 0 12px;
-  }
-  body {
-    padding-bottom: 60px;
-  }
+/* ===== 底部固定导航栏（NEXT Muse，全尺寸） =====
+   导航菜单固定在页面底部，滚动时保持吸底；移动端也常显，去掉 ☰ 开关。 */
+.site-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  background: var(--content-bg-color);
+  border-top: 1px solid rgba(128,128,128,0.4);
+/* 覆盖移动端的折叠样式，让菜单常显 */
+  height: auto !important;
+  overflow: visible !important;
+  visibility: visible !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.site-nav .main-menu {
+  display: flex;
+  justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 8px 16px;
+}
+.site-nav .menu-item a {
+  padding: 6px 10px;
+  line-height: 1.4;
+}
+/* 移除顶部 ☰ 开关（导航常驻底部，不需要） */
+.site-nav-toggle {
+  display: none !important;
+}
+/* 让正文/页脚底部让出固定导航的高度 */
+body {
+  padding-bottom: 100px;
 }
 /* ===== 首页摘要灰底 ===== */
 .excerpt-box {
@@ -2957,5 +2967,5 @@ header.header {
 }
 /* ===== 回到顶部按钮上移，避免被底部固定导航盖住 ===== */
 .back-to-top.back-to-top-on {
-  bottom: 80px !important;
+  bottom: 92px !important;
 }
