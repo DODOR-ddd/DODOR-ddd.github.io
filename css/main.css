@@ -1488,7 +1488,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #f64137;
+  background: #c61dac;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2957,5 +2957,5 @@ header.header {
 }
 /* ===== 回到顶部按钮上移，避免被底部固定导航盖住 ===== */
 .back-to-top.back-to-top-on {
-  bottom: 62px !important;
+  bottom: 80px !important;
 }
