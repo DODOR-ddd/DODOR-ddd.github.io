@@ -1488,7 +1488,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #20457e;
+  background: #45c13b;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2945,13 +2945,21 @@ header.header {
   padding: 6px 10px;
   line-height: 1.4;
 }
-/* 移除顶部 ☰ 开关（导航常驻底部，不需要） */
+/* 移除顶部 ☰ 导航开关（导航常驻底部，不需要） */
 .site-nav-toggle {
   display: none !important;
 }
-/* 让正文/页脚底部让出固定导航的高度 */
+/* 侧边栏开关（TOC）会跟底部导航/回到顶部打架，一并隐藏 */
+.sidebar-toggle {
+  display: none !important;
+}
+/* 页脚上方让出导航高度。
+   主题把 html/body 高度锁成 100vh，导致 body padding-bottom 不生效；
+   这里改 body 为自然高度 + min-height:100vh，padding-bottom 才能产生滚动空间，把页脚顶上来。 */
 body {
-  padding-bottom: 100px;
+  height: auto !important;
+  min-height: 100vh;
+  padding-bottom: 110px;
 }
 /* ===== 首页摘要灰底 ===== */
 .excerpt-box {
