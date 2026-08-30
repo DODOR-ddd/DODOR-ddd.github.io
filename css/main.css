@@ -1482,7 +1482,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #52cdf2;
+  background: #ffff95;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2977,5 +2977,66 @@ header.header {
 @media (prefers-color-scheme: dark) {
   .excerpt-box {
     background: #333;
+  }
+}
+/* ===== 文章正文淡入（0.4s，极简不生硬） ===== */
+.post-body {
+  animation: fade-in-up 0.4s ease both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .post-body {
+    animation: none;
+  }
+}
+/* ===== 链接 hover：下划线从左向右展开 ===== */
+.post-body a {
+  text-decoration: none;
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size 0.25s ease;
+}
+.post-body a:hover {
+  background-size: 100% 1px;
+}
+/* 菜单项 hover：轻微透明度变化 */
+.menu-item a {
+  transition: opacity 0.2s ease;
+}
+.menu-item a:hover {
+  opacity: 0.65;
+}
+/* ===== 代码块语言标签：平时半透明，悬停清晰 ===== */
+.code-lang {
+  opacity: 0.35;
+  transition: opacity 0.25s ease;
+}
+pre:hover > .code-lang,
+figure.highlight:hover .code-lang,
+.highlight:hover .code-lang {
+  opacity: 1;
+}
+/* ===== 首页摘要卡片 hover：轻微上浮 ===== */
+.excerpt-box {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.excerpt-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+@media (prefers-color-scheme: dark) {
+  .excerpt-box:hover {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+  }
+}
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
