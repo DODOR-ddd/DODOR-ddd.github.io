@@ -69,108 +69,10 @@
 
 
 <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="DODOR's BLOG">
+<link rel="stylesheet" href="/css/ascii-shell.css">
+<script defer src="/js/ascii-shell.js"></script>
 
-<style>
-  #d3 {
-    margin: 0 0 2.2em;
-    padding: 1.35em 1.1em 1.1em;
-    border-top: 1px solid rgba(120, 120, 120, .25);
-    border-bottom: 1px solid rgba(120, 120, 120, .25);
-  }
 
-  #d0 {
-    box-sizing: border-box;
-    width: max-content;
-    max-width: 100%;
-    height: 7.4em;
-    margin: 0 auto 1.1em;
-    overflow: hidden;
-    background: transparent;
-    color: rgb(35, 35, 35);
-    font: 600 clamp(7px, 2.4vw, 16px)/1.15 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    letter-spacing: .02em;
-    text-align: left;
-    white-space: pre;
-  }
-
-  #d2 {
-    display: inline-block;
-    width: .68em;
-    height: 1.05em;
-    margin-left: .08em;
-    vertical-align: -.15em;
-    background: currentColor;
-    animation: dblink .72s steps(1, end) infinite;
-  }
-
-  #d1 {
-    box-sizing: border-box;
-    width: 100%;
-    margin: 0;
-    padding: .7em .85em;
-    overflow-x: auto;
-    color: rgb(55, 55, 180);
-    background: rgba(120, 120, 120, .08);
-    font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    text-align: left;
-    white-space: pre;
-  }
-
-  @keyframes dblink {
-    50% { opacity: 0; }
-  }
-
-  @media (max-width: 767px) {
-    #d1 { font-size: 10px; }
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var home = document.querySelector('.main-inner.index');
-    if (!home || document.getElementById('d3')) return;
-
-    var glyphs = {
-      D: [' ____    ', '|  _ \\   ', '| | | |  ', '| |_| |  ', '|____/   '],
-      O: ['  ___    ', ' / _ \\   ', '| | | |  ', '| |_| |  ', ' \\___/   '],
-      R: [' ____    ', '|  _ \\   ', '| |_) |  ', '|  _ <   ', '|_| \\_\\  ']
-    };
-    var picture = [0, 1, 2, 3, 4].map(function (row) {
-      return (glyphs.D[row] + glyphs.O[row] + glyphs.D[row] + glyphs.O[row] + glyphs.R[row]).trimEnd();
-    }).join('\n');
-
-    var source = String.raw`(()=>{let a=[" ____   ___   ____   ___   _____ ","|  _ \\ / _ \\ |  _ \\ / _ \\ |  _ \","| | | | | | || | | || | | || |_) |","| |_| | |_| || |_| || |_| ||  _ <","|____/ \\___/ |____/ \\___/ |_| \\_\\"],s=a.join("\\n"),p=0,e=document.querySelector(".dodor-ascii-logo");(f=()=>{e.textContent=s.slice(0,p++);p<=s.length&&setTimeout(f,18)})()}`;
-
-    source = '(()=>{let a=' + JSON.stringify(picture.split(String.fromCharCode(10))) + ',s=a.join(String.fromCharCode(10)),p=0,e=document.querySelector("#d0");(f=()=>{e.textContent=s.slice(0,p++);p<=s.length&&setTimeout(f,18)})()})()';
-
-    var box = document.createElement('section');
-    box.id = 'd3';
-
-    var logo = document.createElement('pre');
-    logo.id = 'd0';
-    logo.setAttribute('aria-hidden', 'true');
-
-    var code = document.createElement('pre');
-    code.id = 'd1';
-    code.textContent = source;
-
-    box.appendChild(logo);
-    box.appendChild(code);
-    home.insertBefore(box, home.firstChild);
-
-    var position = 0;
-    var cursor = document.createElement('span');
-    cursor.id = 'd2';
-
-    function print() {
-      logo.textContent = picture.slice(0, position++);
-      logo.appendChild(cursor);
-      if (position <= picture.length) window.setTimeout(print, 18);
-    }
-
-    print();
-  });
-</script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -275,7 +177,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -286,7 +188,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -303,6 +205,93 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://dodor.top/2026/09/10/2026%E6%B9%BE%E5%8C%BA%E6%9D%AFwp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/medias/qingxu.jpg">
+      <meta itemprop="name" content="DODOR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DODOR's BLOG">
+      <meta itemprop="description" content="CTF 复现与总结、Rust 等技术学习笔记、折腾记录">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | DODOR's BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/09/10/2026%E6%B9%BE%E5%8C%BA%E6%9D%AFwp/" class="post-title-link" itemprop="url">2026湾区杯wp</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-09-10 13:01:12 / 修改时间：16:50:14" itemprop="dateCreated datePublished" datetime="2026-09-10T13:01:12+08:00">2026-09-10</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>13 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <div class="excerpt-box">Pwn logd 保护基本全开，仅有Partial RELRO。不出意外是格式化字符串改GOT表。看了一下题目架构，大概是程序会收一个ticket,格式为p16+ChaCha8（明文部分），nonce（密钥）硬编码在二进制里。 总的来说是一个crypto-pwn 解密过程 因为没有隐藏符号表，可以用…</div>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -450,7 +439,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-08-30 15:27:29" itemprop="dateModified" datetime="2026-08-30T15:27:29+08:00">2026-08-30</time>
+      <time title="修改时间：2026-09-10 14:09:11" itemprop="dateModified" datetime="2026-09-10T14:09:11+08:00">2026-09-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -654,7 +643,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-08-30 15:27:29" itemprop="dateModified" datetime="2026-08-30T15:27:29+08:00">2026-08-30</time>
+      <time title="修改时间：2026-09-10 14:09:11" itemprop="dateModified" datetime="2026-09-10T14:09:11+08:00">2026-09-10</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -834,13 +823,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">8k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">16 分钟</span>
+    <span title="站点阅读时长">29 分钟</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动

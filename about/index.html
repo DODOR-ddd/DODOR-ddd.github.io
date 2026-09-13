@@ -72,108 +72,10 @@
 
 
 <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="DODOR's BLOG">
+<link rel="stylesheet" href="/css/ascii-shell.css">
+<script defer src="/js/ascii-shell.js"></script>
 
-<style>
-  #d3 {
-    margin: 0 0 2.2em;
-    padding: 1.35em 1.1em 1.1em;
-    border-top: 1px solid rgba(120, 120, 120, .25);
-    border-bottom: 1px solid rgba(120, 120, 120, .25);
-  }
 
-  #d0 {
-    box-sizing: border-box;
-    width: max-content;
-    max-width: 100%;
-    height: 7.4em;
-    margin: 0 auto 1.1em;
-    overflow: hidden;
-    background: transparent;
-    color: rgb(35, 35, 35);
-    font: 600 clamp(7px, 2.4vw, 16px)/1.15 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    letter-spacing: .02em;
-    text-align: left;
-    white-space: pre;
-  }
-
-  #d2 {
-    display: inline-block;
-    width: .68em;
-    height: 1.05em;
-    margin-left: .08em;
-    vertical-align: -.15em;
-    background: currentColor;
-    animation: dblink .72s steps(1, end) infinite;
-  }
-
-  #d1 {
-    box-sizing: border-box;
-    width: 100%;
-    margin: 0;
-    padding: .7em .85em;
-    overflow-x: auto;
-    color: rgb(55, 55, 180);
-    background: rgba(120, 120, 120, .08);
-    font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-    text-align: left;
-    white-space: pre;
-  }
-
-  @keyframes dblink {
-    50% { opacity: 0; }
-  }
-
-  @media (max-width: 767px) {
-    #d1 { font-size: 10px; }
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    var home = document.querySelector('.main-inner.index');
-    if (!home || document.getElementById('d3')) return;
-
-    var glyphs = {
-      D: [' ____    ', '|  _ \\   ', '| | | |  ', '| |_| |  ', '|____/   '],
-      O: ['  ___    ', ' / _ \\   ', '| | | |  ', '| |_| |  ', ' \\___/   '],
-      R: [' ____    ', '|  _ \\   ', '| |_) |  ', '|  _ <   ', '|_| \\_\\  ']
-    };
-    var picture = [0, 1, 2, 3, 4].map(function (row) {
-      return (glyphs.D[row] + glyphs.O[row] + glyphs.D[row] + glyphs.O[row] + glyphs.R[row]).trimEnd();
-    }).join('\n');
-
-    var source = String.raw`(()=>{let a=[" ____   ___   ____   ___   _____ ","|  _ \\ / _ \\ |  _ \\ / _ \\ |  _ \","| | | | | | || | | || | | || |_) |","| |_| | |_| || |_| || |_| ||  _ <","|____/ \\___/ |____/ \\___/ |_| \\_\\"],s=a.join("\\n"),p=0,e=document.querySelector(".dodor-ascii-logo");(f=()=>{e.textContent=s.slice(0,p++);p<=s.length&&setTimeout(f,18)})()}`;
-
-    source = '(()=>{let a=' + JSON.stringify(picture.split(String.fromCharCode(10))) + ',s=a.join(String.fromCharCode(10)),p=0,e=document.querySelector("#d0");(f=()=>{e.textContent=s.slice(0,p++);p<=s.length&&setTimeout(f,18)})()})()';
-
-    var box = document.createElement('section');
-    box.id = 'd3';
-
-    var logo = document.createElement('pre');
-    logo.id = 'd0';
-    logo.setAttribute('aria-hidden', 'true');
-
-    var code = document.createElement('pre');
-    code.id = 'd1';
-    code.textContent = source;
-
-    box.appendChild(logo);
-    box.appendChild(code);
-    home.insertBefore(box, home.firstChild);
-
-    var position = 0;
-    var cursor = document.createElement('span');
-    cursor.id = 'd2';
-
-    function print() {
-      logo.textContent = picture.slice(0, position++);
-      logo.appendChild(cursor);
-      if (position <= picture.length) window.setTimeout(print, 18);
-    }
-
-    print();
-  });
-</script>
 
   <noscript>
     <link rel="stylesheet" href="/css/noscript.css">
@@ -278,7 +180,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">6</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -289,7 +191,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -357,13 +259,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">4k</span>
+    <span title="站点总字数">8k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">16 分钟</span>
+    <span title="站点阅读时长">29 分钟</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
