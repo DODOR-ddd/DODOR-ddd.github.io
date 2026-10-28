@@ -177,7 +177,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -188,7 +188,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -205,6 +205,104 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://dodor.top/2026/10/28/cpu-sim-wasm-interrupt-demo/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/medias/qingxu.jpg">
+      <meta itemprop="name" content="DODOR">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DODOR's BLOG">
+      <meta itemprop="description" content="CTF 复现与总结、Rust 等技术学习笔记、折腾记录">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content=" | DODOR's BLOG">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2026/10/28/cpu-sim-wasm-interrupt-demo/" class="post-title-link" itemprop="url">把 CPU 模拟器编译成 WASM：在浏览器里玩中断</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2026-10-28 21:30:00 / 修改时间：19:20:52" itemprop="dateCreated datePublished" datetime="2026-10-28T21:30:00+08:00">2026-10-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>359</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>之前写过一个小的 CPU 模拟器（<a target="_blank" rel="noopener" href="https://github.com/DODOR-ddd">cpu_sim.c</a>）：4 个寄存器、256 字节内存，重点是把 POSIX 信号（SIGINT &#x2F; SIGUSR1）当作中断线——信号 handler 只置一个 pending 标志（async-signal-safe），真正的派发发生在<strong>指令边界</strong>：保存 PC + 寄存器到上下文栈，跳到 ISR，RETI 恢复现场。</p>
+<p>最近把它编译成了 WebAssembly，现在可以直接在浏览器里玩：</p>
+<p><strong>→ <a href="/demo/cpu-sim/">demo&#x2F;cpu-sim&#x2F;</a></strong></p>
+          <!--noindex-->
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -250,7 +348,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-09-15 23:06:45" itemprop="dateModified" datetime="2026-09-15T23:06:45+08:00">2026-09-15</time>
+      <time title="修改时间：2026-09-30 18:36:33" itemprop="dateModified" datetime="2026-09-30T18:36:33+08:00">2026-09-30</time>
     </span>
 
   
@@ -260,7 +358,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>4.1k</span>
+      <span>4.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -445,7 +543,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-09-10 14:09:11" itemprop="dateModified" datetime="2026-09-10T14:09:11+08:00">2026-09-10</time>
+      <time title="修改时间：2026-10-28 18:46:33" itemprop="dateModified" datetime="2026-10-28T18:46:33+08:00">2026-10-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -649,7 +747,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2026-09-10 14:09:11" itemprop="dateModified" datetime="2026-09-10T14:09:11+08:00">2026-09-10</time>
+      <time title="修改时间：2026-10-28 18:46:33" itemprop="dateModified" datetime="2026-10-28T18:46:33+08:00">2026-10-28</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -835,7 +933,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">31 分钟</span>
+    <span title="站点阅读时长">33 分钟</span>
   </span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动

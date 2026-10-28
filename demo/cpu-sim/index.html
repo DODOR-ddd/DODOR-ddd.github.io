@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cpu_sim.wasm</title>
+<style>
+  :root {
+    --line: #1a1a1a; --fg: #1a1a1a; --bg: #ffffff;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  }
+  * { box-sizing: border-box; border-radius: 0 !important; }
+  body { margin: 0; padding: 20px 16px 48px; background: var(--bg); color: var(--fg); font: 14px/1.55 var(--mono); }
+  .wrap { max-width: 1060px; margin: 0 auto; }
+
+  .titlebar { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px; }
+  .titlebar h1 { margin: 0; font-size: 15px; font-weight: 700; letter-spacing: .02em; }
+  .titlebar a { color: var(--fg); font-size: 12px; }
+
+  .toolbar { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 12px; }
+  button {
+    font: 13px var(--mono); color: var(--fg); background: var(--bg);
+    border: 1px solid var(--line); padding: 4px 14px; cursor: pointer;
+  }
+  button:hover { background: var(--line); color: var(--bg); }
+  button:active { background: var(--fg); color: var(--bg); }
+  button:disabled { opacity: .35; cursor: not-allowed; }
+  .speed { margin-left: auto; font-size: 12px; }
+  .speed input { vertical-align: middle; width: 120px; accent-color: var(--line); }
+
+  fieldset { border: 1px solid var(--line); margin: 0; padding: 10px 12px; min-width: 0; }
+  fieldset legend { font-size: 11px; font-weight: 700; letter-spacing: .1em; padding: 0 6px; }
+  .row { display: flex; gap: 10px; }
+  .row fieldset { flex: 1; }
+  .row fieldset.fixed { flex: 0 0 230px; }
+  @media (max-width: 760px) { .row { flex-direction: column; } }
+
+  table.regs { width: 100%; font-size: 13px; border-collapse: collapse; }
+  table.regs td { padding: 1px 4px; }
+  table.regs td:last-child { text-align: right; }
+  .ctxline { margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--line); font-size: 12px; }
+
+  pre.mem { margin: 0; font-size: 12px; line-height: 1.5; overflow-x: auto; white-space: pre; }
+  .mem .pc { background: var(--line); color: var(--bg); }
+  .mem .cell { text-decoration: underline; text-underline-offset: 2px; }
+  .mem .zero { color: #a8a8a8; }
+
+  pre.serial { margin: 0; height: 300px; overflow-y: auto; font-size: 12.5px; line-height: 1.5; white-space: pre-wrap; word-break: break-all; }
+  pre.serial .int { font-weight: 700; }
+
+  .foot { margin-top: 10px; font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="titlebar">
+    <h1>cpu_sim.wasm</h1>
+    <a href="/">← 回博客</a>
+  </div>
+
+  <div class="toolbar">
+    <button id="run">Run</button>
+    <button id="step">Step</button>
+    <button id="reset">Reset</button>
+    <button id="sigint">SIGINT</button>
+    <button id="sigusr1">SIGUSR1</button>
+    <span class="speed">时钟 <input id="hz" type="range" min="1" max="30" value="3"> <span id="hzv">3 Hz</span></span>
+  </div>
+
+  <div class="row">
+    <fieldset class="fixed">
+      <legend>REGISTERS</legend>
+      <table class="regs">
+        <tr><td>PC</td><td id="r-pc">00</td></tr>
+        <tr><td>R0 (A)</td><td id="r-r0">0</td></tr>
+        <tr><td>R1</td><td id="r-r1">0</td></tr>
+        <tr><td>R2</td><td id="r-r2">0</td></tr>
+        <tr><td>R3</td><td id="r-r3">0</td></tr>
+      </table>
+      <div class="ctxline">ctx depth: <span id="r-ctx">0</span> / 4<br>state: <span id="r-state">idle</span></div>
+    </fieldset>
+    <fieldset>
+      <legend>MEMORY 256B</legend>
+      <pre class="mem" id="mem"></pre>
+    </fieldset>
+  </div>
+
+  <fieldset style="margin-top:10px">
+    <legend>SERIAL</legend>
+    <pre class="serial" id="serial"></pre>
+  </fieldset>
+
+  <div class="foot">main @ 0x00 · SIGINT ISR @ 0x20 · SIGUSR1 ISR @ 0x30</div>
+</div>
+
+<script src="cpu_sim.js"></script>
+<script>
+(() => {
+  'use strict';
+  const $ = id => document.getElementById(id);
+  const serial = $('serial');
+  const appendOut = (text, cls) => {
+    const span = document.createElement('span');
+    if (cls) span.className = cls;
+    span.textContent = text;
+    serial.appendChild(span);
+    serial.scrollTop = serial.scrollHeight;
+  };
+
+  let sim, memView, timer = null;
+
+  const refresh = () => {
+    const pc = sim._sim_pc();
+    $('r-pc').textContent = pc.toString(16).toUpperCase().padStart(2, '0') + 'h';
+    for (let i = 0; i < 4; i++) $('r-r' + i).textContent = sim._sim_reg(i);
+    $('r-ctx').textContent = sim._sim_ctx_sp();
+    $('r-state').textContent = sim._sim_halted() ? 'halted' : (timer ? 'running' : 'idle');
+    const base = sim._sim_mem();
+    const rows = [];
+    for (let row = 0; row < 16; row++) {
+      const cells = [row.toString(16).toUpperCase().padStart(2, '0') + '0'];
+      for (let col = 0; col < 16; col++) {
+        const addr = row * 16 + col;
+        const v = memView[base + addr];
+        let piece = v.toString(16).toUpperCase().padStart(2, '0');
+        if (addr === pc) piece = `<span class="pc">${piece}</span>`;
+        else if (addr === 0x80) piece = `<span class="cell">${piece}</span>`;
+        else if (v === 0) piece = `<span class="zero">${piece}</span>`;
+        cells.push(piece);
+      }
+      rows.push(cells.join(' '));
+    }
+    $('mem').innerHTML = rows.join('\n');
+  };
+
+  const tick = () => {
+    sim._sim_tick();
+    refresh();
+    if (sim._sim_halted()) stop();
+  };
+
+  const start = () => {
+    if (timer || sim._sim_halted()) return;
+    timer = setInterval(tick, 1000 / +$('hz').value);
+    refresh();
+  };
+  const stop = () => {
+    clearInterval(timer); timer = null;
+    refresh();
+  };
+
+  $('run').onclick = () => (timer ? stop() : start());
+  $('step').onclick = () => { stop(); tick(); };
+  $('reset').onclick = () => {
+    stop();
+    serial.textContent = '';
+    sim._sim_reset();
+    refresh();
+  };
+  $('sigint').onclick = () => { sim._sim_raise(2); };
+  $('sigusr1').onclick = () => { sim._sim_raise(10); };
+  $('hz').oninput = e => {
+    $('hzv').textContent = e.target.value + ' Hz';
+    if (timer) { clearInterval(timer); timer = setInterval(tick, 1000 / +e.target.value); }
+  };
+
+  CreateCpuSim({
+    print: t => appendOut(t + '\n'),
+    printErr: t => appendOut(t + '\n')
+  }).then(m => {
+    sim = m;
+    memView = m.HEAPU8;
+    sim._sim_reset();
+    refresh();
+  });
+})();
+</script>
+</body>
+</html>
