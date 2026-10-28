@@ -250,6 +250,8 @@
     function startCrackme() {
       CRACKME.active = true;
       CRACKME.leak = randomLeak();
+      terminal.transcript = [];
+      output.textContent = '';
       appendOutput([
         '[*] welcome to DODOR vulnerable service v0.1',
         '[*] compiled with -fno-stack-protector -z execstack',
@@ -279,6 +281,8 @@
       if (value.includes(CRACKME.winAddress) && bytes >= 32) {
         CRACKME.active = false;
         CRACKME.solved = true;
+        terminal.transcript = [];
+        output.textContent = '';
         appendOutput([
           '[*] EIP = 0x08048456 <win>',
           '[*] spawning /bin/sh ... done',
