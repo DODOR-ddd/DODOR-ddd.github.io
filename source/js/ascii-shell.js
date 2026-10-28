@@ -196,6 +196,14 @@
       shell.inert = false;
       document.body.classList.add('ascii-shell-open');
       startBrand();
+      if (!terminal.motdShown) {
+        terminal.motdShown = true;
+        appendOutput([
+          "DODOR's BLOG pseudo-terminal (tty1)",
+          "type `help` for basics, `neofetch` for the flex,",
+          "or `./crackme` if you are feeling pwn-y."
+        ].join('\n'));
+      }
       window.setTimeout(() => input.focus(), 30);
     }
 
@@ -213,7 +221,7 @@
     }
 
     const rootPath = '/home/dodor/blog';
-    const commands = ['cat', 'cd', 'clear', 'date', 'donut', 'echo', 'exit', 'help', 'history', 'hostname', 'ls', 'open', 'pwd', 'uname', 'whoami'];
+    const commands = ['cat', 'cd', 'clear', 'crackme', 'cowsay', 'date', 'donut', 'echo', 'exit', 'flag', 'help', 'history', 'hostname', 'ls', 'neofetch', 'open', 'pwn', 'pwd', 'sudo', 'uname', 'whoami'];
     const terminal = {
       cwd: [],
       history: [],
@@ -222,8 +230,82 @@
       posts: [],
       tags: new Map(),
       categories: new Map(),
-      indexPromise: null
+      indexPromise: null,
+      motdShown: false
     };
+
+    const CRACKME = {
+      active: false,
+      solved: false,
+      attempts: 0,
+      leak: '',
+      winAddress: '0x08048456',
+      flag: 'flag{n0w_y0u_kn0w_r3t2w1n}'
+    };
+
+    function randomLeak() {
+      return '0xbf' + Math.floor(Math.random() * 0xffffff).toString(16).padStart(6, '0');
+    }
+
+    function startCrackme() {
+      CRACKME.active = true;
+      CRACKME.leak = randomLeak();
+      appendOutput([
+        '[*] welcome to DODOR vulnerable service v0.1',
+        '[*] compiled with -fno-stack-protector -z execstack',
+        '',
+        '  0x08048456 <win>   push   ebp',
+        '                     call   system',
+        '  0x0804848d <vuln>  lea    eax,[esp+0x1c]   ; buf',
+        '  0x08048491         call   gets             ; ?!',
+        '',
+        `[*] stack leak: ${CRACKME.leak}`,
+        '[?] feed me:'
+      ].join('\n'));
+    }
+
+    function crackmeFeed(value) {
+      appendOutput(`> ${value}`);
+      CRACKME.attempts += 1;
+      if (CRACKME.solved) {
+        appendOutput('[*] service already pwned, nothing left to break');
+        return;
+      }
+      const bytes = new TextEncoder().encode(value).length;
+      if (bytes === 0) {
+        appendOutput('[?] feeding nothing changes nothing');
+        return;
+      }
+      if (value.includes(CRACKME.winAddress) && bytes >= 32) {
+        CRACKME.active = false;
+        CRACKME.solved = true;
+        appendOutput([
+          '[*] EIP = 0x08048456 <win>',
+          '[*] spawning /bin/sh ... done',
+          '',
+          ' ____   ___  _   _ _____ ____      _    ____ _  _______ ____  ',
+          '|  _ \\ / _ \\| | | | ____|  _ \\    / \\  / ___| |/ / ____|  _ \\ ',
+          '| |_) | | | | | | |  _| | |_) |  / _ \\| |   | \' (|  _| | |_) |',
+          '|  _ <| |_| | |_| | |___|  _ <  / ___ \\ |___| . \\| |___|  _ < ',
+          '|_| \\_|\\___/ \\___/|_____|_| \\_\\/_/   \\_\\____|_|\\_\\_____|_| \\_\\',
+          '',
+          CRACKME.flag,
+          '',
+          '[i] achievement unlocked: sudo works now. try it.'
+        ].join('\n'));
+        return;
+      }
+      if (bytes >= 28) {
+        const hints = [
+          '[i] hint: EIP is yours. the banner already showed you where win() lives',
+          '[i] hint: 28 bytes of padding, then the <win> address, e.g. python3 -c \'print("A"*28+"0x08048456")\'',
+          '[i] hint: literally type 28 random characters followed by 0x08048456'
+        ];
+        appendOutput(`[*] received ${bytes} bytes\nSegmentation fault (core dumped)\n${hints[Math.min(CRACKME.attempts - 1, hints.length - 1)]}`);
+        return;
+      }
+      appendOutput(`[*] received ${bytes} bytes: buffer intact, access denied (28+ bytes to smash the stack)`);
+    }
 
     function tokenize(raw) {
       return (raw.match(/(?:[^\s"']+|"[^"]*"|'[^']*')+/g) || [])
@@ -398,7 +480,61 @@
       let result = '';
 
       if (command === 'help') {
-        result = 'cat  cd  clear  date  echo  exit  history  hostname  ls  open  pwd  uname  whoami';
+        result = 'cat  cd  clear  crackme  cowsay  date  donut  echo  exit  history  hostname  ls  neofetch  open  pwd  sudo  uname  whoami';
+      } else if (command === 'crackme' || command === './crackme') {
+        startCrackme();
+        return;
+      } else if (command === 'pwn') {
+        result = 'pwn: try ./crackme — a ret2win warmup. smash 28 bytes, jump where win() lives.';
+      } else if (command === 'flag') {
+        result = CRACKME.solved ? `${CRACKME.flag} — you already have it, show-off` : 'flag: permission denied. ./crackme looks lonely.';
+      } else if (command === 'sudo') {
+        const rest = args.join(' ');
+        if (rest.startsWith('rm')) {
+          result = [
+            'rm: descending into /boot ... /etc ... /home/dodor/ctf ...',
+            'nice try. this filesystem is a string literal in ascii-shell.js'
+          ].join('\n');
+        } else {
+          result = CRACKME.solved
+            ? 'root@blog:~# ...fine, you earned root. but there is nothing here to delete.'
+            : 'dodor is not in the sudoers file. This incident will be reported.';
+        }
+      } else if (command === 'neofetch') {
+        await loadBlogIndex();
+        const info = [
+          'dodor@blog',
+          '----------',
+          'OS: DODOR\'s BLOG (Hexo 8)',
+          'Host: dodor.top',
+          'Kernel: 6.6.0-wasm',
+          'Shell: ascii-shell 1.0',
+          'WM: NexT (Muse)',
+          `Posts: ${terminal.posts.length}`,
+          `Tags: ${terminal.tags.size}`,
+          `Categories: ${terminal.categories.size}`,
+          'Uptime: since 2025'
+        ];
+        const logoLines = BRAND.split('\n');
+        const rows = Math.max(logoLines.length, info.length);
+        const merged = [];
+        for (let i = 0; i < rows; i++) {
+          merged.push((logoLines[i] || '').padEnd(22) + (info[i] || ''));
+        }
+        result = merged.join('\n');
+      } else if (command === 'cowsay') {
+        const msg = args.join(' ') || 'moo';
+        const line = '-'.repeat(msg.length + 2);
+        result = [
+          ` ${line}`,
+          `< ${msg} >`,
+          ` ${line}`,
+          '        \\   ^__^',
+          '         \\  (oo)\\_______',
+          '            (__)\\       )\\/\\',
+          '                ||----w |',
+          '                ||     ||'
+        ].join('\n');
       } else if (command === 'pwd') {
         result = `${rootPath}${terminal.cwd.length ? `/${terminal.cwd.join('/')}` : ''}`;
       } else if (command === 'ls') {
@@ -486,7 +622,8 @@
 
     form.addEventListener('submit', async event => {
       event.preventDefault();
-      await run(input.value);
+      if (CRACKME.active) crackmeFeed(input.value);
+      else await run(input.value);
       input.value = '';
     });
 
@@ -500,13 +637,19 @@
       } else if (event.key === 'Tab') {
         event.preventDefault();
         await completeInput();
+      } else if (event.key === 'Enter') {
+        event.preventDefault();
+        const value = input.value;
+        input.value = '';
+        if (CRACKME.active) crackmeFeed(value);
+        else await run(value);
       }
     });
 
     close.addEventListener('click', closeShell);
     document.addEventListener('keydown', event => {
       if (event.ctrlKey || event.metaKey || event.altKey) return;
-      if ((event.key === '~' || event.key === '～') && !shell.classList.contains('is-open')) {
+      if ((event.key === '~' || event.key === '～' || event.key === '`') && !shell.classList.contains('is-open')) {
         event.preventDefault();
         openShell();
       } else if (event.key === 'Escape' && shell.classList.contains('is-open')) {
