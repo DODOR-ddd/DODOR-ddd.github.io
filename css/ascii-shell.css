@@ -12,11 +12,10 @@
   inset: 0;
   isolation: isolate;
   display: grid;
-  grid-template-rows: 52px minmax(0, 1fr) clamp(84px, 14vh, 126px);
+  grid-template-rows: 52px minmax(0, 1fr) clamp(200px, 36dvh, 430px);
   box-sizing: border-box;
   width: 100%;
-  height: 50vh;
-  height: 50dvh;
+  height: clamp(460px, 68dvh, 900px);
   margin: 0;
   overflow: auto;
   border: 0;
@@ -148,9 +147,9 @@ body.ascii-shell-open {
 }
 
 .ascii-shell__scene {
-  min-height: 18em;
+  min-height: 14em;
   color: var(--term-fg);
-  font-size: clamp(6px, .86vw, 11px);
+  font-size: clamp(6px, .8vw, 10px);
   line-height: 1;
   text-align: center;
 }
@@ -183,7 +182,7 @@ body.ascii-shell-open {
   margin: 0 0 6px;
   overflow: auto;
   color: var(--term-cyan);
-  font-size: 11px;
+  font-size: 12.5px;
   line-height: 1.5;
   white-space: pre-wrap;
 }
