@@ -1,0 +1,188 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 820" font-family="Consolas, Monaco, monospace" font-size="11">
+  <defs>
+    <linearGradient id="kernel" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#555"/><stop offset="100%" stop-color="#444"/></linearGradient>
+    <linearGradient id="stack" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e06c75"/><stop offset="100%" stop-color="#c0505a"/></linearGradient>
+    <linearGradient id="ld" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d19a66"/><stop offset="100%" stop-color="#b8844e"/></linearGradient>
+    <linearGradient id="vdso" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e5c07b"/><stop offset="100%" stop-color="#c9a65c"/></linearGradient>
+    <linearGradient id="libc" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#61afef"/><stop offset="100%" stop-color="#4a8ec8"/></linearGradient>
+    <linearGradient id="heap" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#98c379"/><stop offset="100%" stop-color="#7aa85d"/></linearGradient>
+    <linearGradient id="elf" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#56b6c2"/><stop offset="100%" stop-color="#4098a2"/></linearGradient>
+    <linearGradient id="mmap" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#7ec87b"/><stop offset="100%" stop-color="#5fa85c"/></linearGradient>
+    <linearGradient id="nullp" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#444"/><stop offset="100%" stop-color="#333"/></linearGradient>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="520" height="820" fill="#1e1e2e" rx="8"/>
+
+  <!-- 标题 -->
+  <text x="260" y="22" text-anchor="middle" fill="#cdd6f4" font-size="13" font-weight="bold">Linux x86-64 进程虚拟地址空间</text>
+
+  <!-- 柱体 -->
+  <rect x="30" y="0" width="220" height="820" fill="none" stroke="none"/>
+
+  <!-- ===== 内核空间 ===== -->
+  <rect x="50" y="36" width="180" height="18" fill="url(#kernel)" rx="2"/>
+  <text x="240" y="49" fill="#888" font-size="10">内核空间 (不可访问)</text>
+  <text x="45" y="49" fill="#999" font-size="9">0xFFFF...</text>
+
+  <!-- 分界线 -->
+  <line x1="50" y1="60" x2="230" y2="60" stroke="#666" stroke-dasharray="3,3"/>
+  <text x="240" y="64" fill="#666" font-size="9">用户/内核分界 0x7FFFFFFFFFFF</text>
+
+  <!-- 间隙 -->
+  <rect x="64" y="68" width="152" height="8" fill="#2a2a3a" stroke="#444" stroke-dasharray="1,2" rx="1"/>
+  <text x="240" y="76" fill="#555" font-size="9">随机间隙</text>
+
+  <!-- ===== Stack ===== -->
+  <rect x="50" y="80" width="180" height="36" fill="url(#stack)" rx="3"/>
+  <text x="60" y="94" fill="#fff" font-size="11" font-weight="bold">[stack]</text>
+  <text x="60" y="107" fill="#fcc" font-size="9">局部变量 · 返回地址 · argv/envp</text>
+  <text x="240" y="94" fill="#e06c75" font-size="10">0x7FFFFFFFxxxx</text>
+  <text x="240" y="107" fill="#e06c75" font-size="9">↕ 向下增长</text>
+  <!-- stack sub -->
+  <rect x="56" y="81" width="168" height="6" fill="#a03040" opacity="0.4" rx="1"/>
+  <rect x="56" y="105" width="168" height="6" fill="#a03040" opacity="0.4" rx="1"/>
+
+  <!-- 间隙 -->
+  <rect x="64" y="120" width="152" height="8" fill="#2a2a3a" stroke="#444" stroke-dasharray="1,2" rx="1"/>
+
+  <!-- 线程栈 -->
+  <rect x="58" y="132" width="164" height="14" fill="#4a3040" rx="2"/>
+  <text x="68" y="142" fill="#a07080" font-size="9">匿名映射 (线程栈)</text>
+
+  <!-- 间隙 -->
+  <rect x="64" y="150" width="152" height="8" fill="#2a2a3a" stroke="#444" stroke-dasharray="1,2" rx="1"/>
+
+  <!-- ===== ld.so ===== -->
+  <rect x="50" y="162" width="180" height="30" fill="url(#ld)" rx="3"/>
+  <text x="60" y="176" fill="#fff" font-size="11" font-weight="bold">ld-linux-x86-64.so.2</text>
+  <text x="60" y="188" fill="#fdd" font-size="9">.rodata | .text | .data | .bss (_rtld_global)</text>
+  <text x="240" y="176" fill="#d19a66" font-size="10">0x7FFFF7FFxxxx</text>
+
+  <!-- ===== vdso/vvar ===== -->
+  <rect x="50" y="196" width="180" height="14" fill="url(#vdso)" rx="2"/>
+  <text x="60" y="206" fill="#fff" font-size="10">[vdso] 内核注入代码</text>
+  <text x="240" y="206" fill="#e5c07b" font-size="10">0x7FFFF7FCxxxx</text>
+  <rect x="50" y="212" width="180" height="12" fill="#504830" rx="2"/>
+  <text x="60" y="221" fill="#887050" font-size="9">[vvar] 内核数据</text>
+
+  <!-- 间隙 -->
+  <rect x="64" y="228" width="152" height="8" fill="#2a2a3a" stroke="#444" stroke-dasharray="1,2" rx="1"/>
+
+  <!-- ===== libc ===== -->
+  <rect x="50" y="240" width="180" height="42" fill="url(#libc)" rx="3"/>
+  <text x="60" y="254" fill="#fff" font-size="11" font-weight="bold">libc.so.6</text>
+  <text x="60" y="266" fill="#ddf" font-size="9">.rodata ("/bin/sh")</text>
+  <text x="60" y="276" fill="#ddf" font-size="9">.text (system · execve · malloc)</text>
+  <text x="240" y="254" fill="#61afef" font-size="10">0x7FFFF7xx0000</text>
+  <text x="240" y="270" fill="#61afef" font-size="9">.data→environ, stdout</text>
+  <!-- libc sub -->
+  <rect x="56" y="241" width="49" height="40" fill="#3070a0" opacity="0.5" rx="1"/>
+  <text x="62" y="270" fill="#fff" font-size="7">r--p</text>
+  <rect x="107" y="241" width="62" height="40" fill="#3070a0" opacity="0.5" rx="1"/>
+  <text x="116" y="270" fill="#fff" font-size="7">r-xp</text>
+  <rect x="171" y="241" width="53" height="40" fill="#3070a0" opacity="0.5" rx="1"/>
+  <text x="178" y="270" fill="#fff" font-size="7">r--p/rw-p</text>
+
+  <!-- 间隙 -->
+  <rect x="64" y="286" width="152" height="8" fill="#2a2a3a" stroke="#444" stroke-dasharray="1,2" rx="1"/>
+
+  <!-- 其他共享库 -->
+  <rect x="58" y="298" width="164" height="14" fill="#3a4a5a" rx="2"/>
+  <text x="68" y="308" fill="#7a8a9a" font-size="9">其他 .so 共享库 ...</text>
+
+  <!-- 间隙 -->
+  <rect x="64" y="316" width="152" height="8" fill="#2a2a3a" stroke="#444" stroke-dasharray="1,2" rx="1"/>
+
+  <!-- ===== mmap 大块分配 ===== -->
+  <rect x="58" y="328" width="164" height="14" fill="url(#mmap)" rx="2"/>
+  <text x="68" y="338" fill="#fff" font-size="9">mmap 匿名映射 (malloc >128KB)</text>
+
+  <!-- 间隙 -->
+  <rect x="64" y="346" width="152" height="8" fill="#2a2a3a" stroke="#444" stroke-dasharray="1,2" rx="1"/>
+
+  <!-- libc 内部 -->
+  <rect x="58" y="358" width="164" height="12" fill="#3a4a5a" rx="2"/>
+  <text x="68" y="367" fill="#7a8a9a" font-size="9">libc 内部数据 (arena)</text>
+
+  <!-- 间隙 -->
+  <rect x="64" y="374" width="152" height="8" fill="#2a2a3a" stroke="#444" stroke-dasharray="1,2" rx="1"/>
+
+  <!-- ===== Heap ===== -->
+  <rect x="50" y="386" width="180" height="28" fill="url(#heap)" rx="3"/>
+  <text x="60" y="400" fill="#fff" font-size="11" font-weight="bold">[heap] brk arena</text>
+  <text x="60" y="412" fill="#dfd" font-size="9">malloc(&lt;128KB) · chunk 链表</text>
+  <text x="240" y="400" fill="#98c379" font-size="10">0x5555555xxxxx</text>
+  <text x="240" y="412" fill="#98c379" font-size="9">↕ 向上增长</text>
+
+  <!-- 间隙 -->
+  <rect x="64" y="418" width="152" height="8" fill="#2a2a3a" stroke="#444" stroke-dasharray="1,2" rx="1"/>
+
+  <!-- ===== ELF 程序 ===== -->
+  <rect x="50" y="430" width="180" height="66" fill="url(#elf)" rx="3"/>
+  <text x="60" y="444" fill="#fff" font-size="11" font-weight="bold">程序本体 (PIE 开启)</text>
+  <text x="240" y="444" fill="#56b6c2" font-size="10">0x555555554000</text>
+
+  <rect x="56" y="450" width="168" height="11" fill="#306060" rx="1"/>
+  <text x="60" y="458" fill="#bdf" font-size="9">r--p  ELF Header · .interp · .note</text>
+
+  <rect x="56" y="463" width="168" height="11" fill="#306060" rx="1"/>
+  <text x="60" y="471" fill="#bdf" font-size="9">r-xp  .text · .init · .plt</text>
+
+  <rect x="56" y="476" width="168" height="11" fill="#306060" rx="1"/>
+  <text x="60" y="484" fill="#bdf" font-size="9">r--p  .rodata · .eh_frame</text>
+
+  <rect x="56" y="489" width="168" height="11" fill="#306060" rx="1"/>
+  <text x="60" y="497" fill="#bdf" font-size="9">rw-p  .data · .bss · .got.plt</text>
+
+  <!-- 间隙 -->
+  <rect x="64" y="500" width="152" height="8" fill="#2a2a3a" stroke="#444" stroke-dasharray="1,2" rx="1"/>
+
+  <!-- ===== PIE 关闭 ===== -->
+  <rect x="70" y="512" width="140" height="22" fill="#2a4a4a" rx="2"/>
+  <text x="78" y="524" fill="#7aa" font-size="9">PIE 关闭时固定在此</text>
+  <text x="78" y="534" fill="#7aa" font-size="9">0x400000 起</text>
+
+  <!-- 间隙 -->
+  <rect x="64" y="538" width="152" height="8" fill="#2a2a3a" stroke="#444" stroke-dasharray="1,2" rx="1"/>
+
+  <!-- 保留 -->
+  <rect x="64" y="550" width="152" height="14" fill="#2a2a3a" rx="2"/>
+  <text x="72" y="560" fill="#555" font-size="9">保留区域</text>
+
+  <!-- 间隙 -->
+  <rect x="64" y="566" width="152" height="8" fill="#2a2a3a" stroke="#444" stroke-dasharray="1,2" rx="1"/>
+
+  <!-- NULL 页 -->
+  <rect x="50" y="578" width="180" height="16" fill="url(#nullp)" rx="3"/>
+  <text x="60" y="590" fill="#666" font-size="10">NULL 页 (mmap_min_addr 保护)</text>
+  <text x="240" y="590" fill="#555" font-size="10">0x00000000</text>
+
+  <!-- === 右侧图例 === -->
+  <rect x="280" y="612" width="210" height="180" fill="#262636" rx="6" stroke="#444"/>
+  <text x="385" y="632" text-anchor="middle" fill="#cdd6f4" font-size="11" font-weight="bold">图例</text>
+
+  <rect x="295" y="642" width="14" height="14" fill="url(#kernel)" rx="2"/>
+  <text x="316" y="653" fill="#888" font-size="10">内核空间</text>
+
+  <rect x="295" y="662" width="14" height="14" fill="url(#stack)" rx="2"/>
+  <text x="316" y="673" fill="#e06c75" font-size="10">栈 [stack]</text>
+
+  <rect x="295" y="682" width="14" height="14" fill="url(#ld)" rx="2"/>
+  <text x="316" y="693" fill="#d19a66" font-size="10">ld.so 动态链接器</text>
+
+  <rect x="295" y="702" width="14" height="14" fill="url(#libc)" rx="2"/>
+  <text x="316" y="713" fill="#61afef" font-size="10">libc.so 标准库</text>
+
+  <rect x="295" y="722" width="14" height="14" fill="url(#mmap)" rx="2"/>
+  <text x="316" y="733" fill="#98c379" font-size="10">mmap 匿名映射</text>
+
+  <rect x="295" y="742" width="14" height="14" fill="url(#heap)" rx="2"/>
+  <text x="316" y="753" fill="#7ec87b" font-size="10">堆 [heap]</text>
+
+  <rect x="295" y="762" width="14" height="14" fill="url(#elf)" rx="2"/>
+  <text x="316" y="773" fill="#56b6c2" font-size="10">程序本体 (ELF)</text>
+
+  <rect x="295" y="782" width="14" height="14" fill="url(#nullp)" rx="2"/>
+  <text x="316" y="793" fill="#555" font-size="10">NULL / 保留</text>
+</svg>

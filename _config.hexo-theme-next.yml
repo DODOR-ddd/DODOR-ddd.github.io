@@ -1,0 +1,99 @@
+# =========================================================
+# 黑白极简配置 —— 覆盖 themes/hexo-theme-next/_config.yml
+# =========================================================
+
+# Muse 单栏方案（默认），纯黑白排版
+scheme: Muse
+
+# 跟随系统明暗
+darkmode: true
+
+# 头像（沿用旧 matery 主题的 qingxu.jpg）
+avatar:
+  url: /medias/qingxu.jpg
+  rounded: true
+  rotated: false
+
+# 网站图标：用头像生成的 favicon
+favicon:
+  small: /medias/favicon.png
+  medium: /medias/favicon.png
+  apple_touch_icon: /medias/apple-touch-icon.png
+  safari_pinned_tab: false
+
+# 第三方资源全部走本地 node_modules，不依赖 CDN
+vendors:
+  plugins: local
+
+# 菜单
+menu:
+  home: / || fa fa-home
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  archives: /archives/ || fa fa-archive
+  about: /about/ || fa fa-user
+  friends: /friends/ || fa fa-address-book
+  RSS: /atom.xml || fa fa-rss
+
+menu_settings:
+  icons: true
+  badges: false
+
+# 页脚
+footer:
+  since: 2025
+  icon:
+    name: fa fa-code
+    animated: false
+    color: "#333"
+  powered: true
+
+# 代码块：复制按钮 + 语言标签 + 高亮配色（prismjs，明暗跟随系统）
+codeblock:
+  copy_button:
+    enable: true
+    style: flat
+  language: true
+  prism:
+    light: prism
+    dark: prism-okaidia
+
+# 首页摘要不显示 "Read more" 按钮（点标题进全文）
+read_more_btn: false
+
+# 回到顶部
+back2top:
+  enable: true
+
+# 站内搜索（hexo-generator-search 生成 search.xml）
+local_search:
+  enable: true
+  top_n_per_article: 3
+  preload: true
+
+# <head> 注入（RSS 自动发现等）
+custom_file_path:
+  head: source/_data/head.njk
+
+# 图片点击放大（medium-zoom）
+mediumzoom: true
+
+# 关闭与黑白无关的动效和功能
+motion: false
+pjax: false
+bookmark:
+  enable: false
+reading_progress:
+  enable: false
+
+# 文章字数 / 阅读时长
+symbols_count_time:
+  separated_meta: true
+  item_text_total: false
+
+# 文章底部版权声明（CC BY-NC-SA）
+creative_commons:
+  license: by-nc-sa
+  size: small
+  sidebar: false
+  post: true
