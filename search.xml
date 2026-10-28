@@ -4,35 +4,6 @@
   
     
     <entry>
-      <title>把 CPU 模拟器编译成 WASM：在浏览器里玩中断</title>
-      <link href="/2026/10/28/cpu-sim-wasm-interrupt-demo/"/>
-      <url>/2026/10/28/cpu-sim-wasm-interrupt-demo/</url>
-      
-        <content type="html"><![CDATA[<p>之前写过一个小的 CPU 模拟器（<a href="https://github.com/DODOR-ddd">cpu_sim.c</a>）：4 个寄存器、256 字节内存，重点是把 POSIX 信号（SIGINT &#x2F; SIGUSR1）当作中断线——信号 handler 只置一个 pending 标志（async-signal-safe），真正的派发发生在<strong>指令边界</strong>：保存 PC + 寄存器到上下文栈，跳到 ISR，RETI 恢复现场。</p><p>最近把它编译成了 WebAssembly，现在可以直接在浏览器里玩：</p><p><strong>→ <a href="/demo/cpu-sim/">demo&#x2F;cpu-sim&#x2F;</a></strong></p><span id="more"></span><h2 id="移植时的三个映射"><a href="#移植时的三个映射" class="headerlink" title="移植时的三个映射"></a>移植时的三个映射</h2><p>浏览器没有 POSIX，对应关系其实很自然：</p><table><thead><tr><th>原版</th><th>WASM 版</th></tr></thead><tbody><tr><td><code>kill -INT</code> &#x2F; Ctrl-C</td><td>页面按钮 → 导出函数 <code>sim_raise(2)</code></td></tr><tr><td><code>while(!halted) { ...; usleep(300ms); }</code></td><td>JS 时钟 <code>setInterval(() =&gt; sim_tick(), 1000/hz)</code></td></tr><tr><td><code>printf</code> 到终端</td><td>Emscripten 把 stdout 重定向到 <code>Module.print</code>，画到串口面板</td></tr></tbody></table><p>核心语义一行没改：中断依旧只在指令边界派发，<code>pending_sig</code> 依旧是原子的”只置不查”。所以你在浏览器里看到的行为和本地跑 <code>./cpu_sim</code> 完全一致——包括中断打在 <code>STA</code> 之前时，数据格还没被写入这种时序细节。</p><h2 id="怎么玩"><a href="#怎么玩" class="headerlink" title="怎么玩"></a>怎么玩</h2><ol><li><strong>Run</strong> 开始倒计时（3 Hz 慢时钟，方便观察）</li><li>运行中点 <strong>⚡ SIGINT</strong>：ISR 会读 <code>mem[0x80]</code>、打印、覆写成 42、RETI</li><li>点 <strong>⚡ SIGUSR1</strong>：ISR 置 <code>R2 = 1</code> 当标志</li><li>留意 REGISTERS 面板的 <strong>ctx stack depth</strong>：进 ISR +1，RETI -1，嵌套中断最深 4 层</li><li>MEMORY 面板反白高亮是 PC，下划线标注的是数据格</li></ol><p>构建方式在仓库 <code>tools/wasm/</code>（emcc，<code>--no-entry</code>，产物 7.5 KB）。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 技术 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> WebAssembly </tag>
-            
-            <tag> C </tag>
-            
-            <tag> cpu_sim </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>2026湾区杯wp</title>
       <link href="/2026/09/10/2026%E6%B9%BE%E5%8C%BA%E6%9D%AFwp/"/>
       <url>/2026/09/10/2026%E6%B9%BE%E5%8C%BA%E6%9D%AFwp/</url>
