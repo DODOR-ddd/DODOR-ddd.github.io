@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "hexo generate",
+    "localize": "python3 tools/localize_imgs.py",
     "clean": "hexo clean",
-    "deploy": "hexo deploy",
+    "build": "hexo clean && python3 tools/localize_imgs.py && hexo generate",
+    "deploy": "npm run build && hexo deploy",
     "server": "hexo server"
   },
   "hexo": {
