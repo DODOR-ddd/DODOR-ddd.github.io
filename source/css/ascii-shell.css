@@ -17,7 +17,7 @@
   width: 100%;
   height: clamp(460px, 68dvh, 900px);
   margin: 0;
-  overflow: auto;
+  overflow: hidden;
   border: 0;
   border-radius: 0;
   color: var(--term-fg);
@@ -110,7 +110,7 @@ body.ascii-shell-open {
   grid-template-columns: minmax(0, 1.08fr) minmax(280px, .92fr);
   align-items: center;
   min-height: 0;
-  overflow: auto;
+  overflow: hidden;
   align-self: stretch;
 }
 
@@ -180,12 +180,24 @@ body.ascii-shell-open {
   min-height: 0;
   flex: 1;
   margin: 0 0 6px;
-  overflow: auto;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   color: var(--term-cyan);
   font-size: 12.5px;
   line-height: 1.5;
   white-space: pre-wrap;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(210, 210, 210) transparent;
 }
+
+.ascii-shell__output::-webkit-scrollbar { width: 5px; }
+
+.ascii-shell__output::-webkit-scrollbar-thumb {
+  background: rgb(210, 210, 210);
+  border-radius: 0;
+}
+
+.ascii-shell__output::-webkit-scrollbar-track { background: transparent; }
 
 .ascii-shell__form {
   display: flex;
