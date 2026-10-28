@@ -11,25 +11,25 @@ categories:
 
 ### [REDACTED]
 
-题目为（涂黑，修改）过后的一个pdf，我们可以在第一个涂黑位置找到第一段敏感字符串，直接通过文字编辑功能将颜色改为白色再复制出来得到第一个字符串**1:PAR4D0X**。(![屏幕截图 2026-02-08 203633](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-08%20203633.png)
+题目为（涂黑，修改）过后的一个pdf，我们可以在第一个涂黑位置找到第一段敏感字符串，直接通过文字编辑功能将颜色改为白色再复制出来得到第一个字符串**1:PAR4D0X**。(![屏幕截图 2026-02-08 203633](/imgs/screenshot-2026-02-08-203633.png)
 
-然后在第二个涂黑的位置在文字编辑的模式下可以看到以下内容![](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-03%20165813.png)
+然后在第二个涂黑的位置在文字编辑的模式下可以看到以下内容![](/imgs/screenshot-2026-02-03-165813.png)
 
 因为字体原因无法直接复制，选着直接图像识别。三段经典JWT，第一段是加密方式，第二段为内容，第三段为签名，经过base64解码得出第二个字符串**2:AllCl3arToPr0ceed**
 
-![](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-03%20170152.png)
+![](/imgs/screenshot-2026-02-03-170152.png)
 
 随后在图片位置有处涂黑，拉对比度和亮度识别出第三个字符串**3:Sh4m1R**
 
-![](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-03%20170751.png)
+![](/imgs/screenshot-2026-02-03-170751.png)
 
 最后在检查pdf的文件结构时发现其尾部有2个%EOF为结尾，可知为pdf的增量更新，第四个字符藏在旧版本被删掉的那一页里。
 
-![](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-05%20171658.png)
+![](/imgs/screenshot-2026-02-05-171658.png)
 
-我们现在要做的就是将那删掉的一页恢复，也就是定位到第一个%EOF的位置对pdf进行切片，通过grep找到%EOF的位置。![](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-05%20200000.png)
+我们现在要做的就是将那删掉的一页恢复，也就是定位到第一个%EOF的位置对pdf进行切片，通过grep找到%EOF的位置。![](/imgs/screenshot-2026-02-05-200000.png)
 
-![](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-08%20205415.png)
+![](/imgs/screenshot-2026-02-08-205415.png)
 
 计算%EOF的代码如下
 
@@ -43,7 +43,7 @@ with open("manual_old.pdf", "wb") as f_out:
 
 打开manual_old.pdf
 
-![](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-05%20180535.png)
+![](/imgs/screenshot-2026-02-05-180535.png)
 
 找到第四段字符串**4:D0cR3qu3st3r_Tutu**,最后连接得到flag。
 
@@ -57,15 +57,15 @@ with open("manual_old.pdf", "wb") as f_out:
 
 ![](/imgs/hgame/screenshot-2026-02-02-112832.png)
 
-![](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-02%20112818.png)
+![](/imgs/screenshot-2026-02-02-112818.png)
 
 最终访问/check得到flag为：
 
-![](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-02%20112849.png)
+![](/imgs/screenshot-2026-02-02-112849.png)
 
 ### **博丽神社的绘马挂**
 
-题目说明紫在归档完毕的绘马里藏了一些不可告人的秘密。分析前端代码及main.js。发现，题目没有对消息提交界面的content做过滤处理![image-20260208211730847](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/image-20260208211730847.png)
+题目说明紫在归档完毕的绘马里藏了一些不可告人的秘密。分析前端代码及main.js。发现，题目没有对消息提交界面的content做过滤处理![image-20260208211730847](/imgs/image-20260208211730847.png)
 
 同时有/api/report可以让Reimu访问。由此得到本体为存储型XSS，但是普通用户看不到已归档的内容，所以接下来的思路就是通过XSS漏洞让管理员在已归档的文档中找到flag，并通过/api/message发出来，这样普通用户就能看到了。按照以上思路构造payload，写脚本如下：
 
@@ -130,7 +130,7 @@ if __name__ == "__main__":
 <img src=x onerror="payload">
 ```
 
-最后得到flag![](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-06%20115538.png)
+最后得到flag![](/imgs/screenshot-2026-02-06-115538.png)
 
 ## crypto
 
@@ -273,4 +273,4 @@ if __name__ == "__main__":
 
 最终得到flag
 
-![](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202026-02-08%20213711.png)
+![](/imgs/screenshot-2026-02-08-213711.png)

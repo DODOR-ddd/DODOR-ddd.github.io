@@ -118,7 +118,7 @@ if __name__ == "__main__":
 (wp的脚本，更加简洁)
 然后组成图片如下
 
-![](https://cdn.jsdelivr.net/gh/DODOR-ddd/Image@main/reconstructed_hidden.png)
+![](/imgs/reconstructed_hidden.png)
 
 然后就可以解密拿到一个其实是png的jpg了，我们用convert把他转化成jpg，alpha通道会自动丢弃得到flag。(以后我一定先查附件本身压缩(哭))
 
