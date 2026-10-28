@@ -35,6 +35,6 @@ tags:
 2. 运行中点 **⚡ SIGINT**：ISR 会读 `mem[0x80]`、打印、覆写成 42、RETI
 3. 点 **⚡ SIGUSR1**：ISR 置 `R2 = 1` 当标志
 4. 留意 REGISTERS 面板的 **ctx stack depth**：进 ISR +1，RETI -1，嵌套中断最深 4 层
-5. MEMORY 面板绿色高亮是 PC，黄色是数据格
+5. MEMORY 面板反白高亮是 PC，下划线标注的是数据格
 
 构建方式在仓库 `tools/wasm/`（emcc，`--no-entry`，产物 7.5 KB）。
